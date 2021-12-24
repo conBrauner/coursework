@@ -1,0 +1,216 @@
+
+\documentclass[11pt, letterpaper]{article}
+\usepackage[margin=1.5cm]{geometry}
+\pagestyle{plain}
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage[shortlabels]{enumitem}
+\usepackage[makeroom]{cancel}
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+
+\begin{document}
+\title{Assignment 3\\\normalsize STAT321}
+\author{Connor Braun}
+
+\allowdisplaybreaks
+
+\maketitle
+
+\section*{Problem 1}
+\subsection*{a) \normalfont Compute probability that no one enters the store from $12:00$ to $12:03$.}
+Let $\lambda=1$ be the typical number of people to enter the store every three minutes and 
+let $X$ be the discrete random variable for the number of people to enter the store from $12:00$ to $12:03$.
+Then we have that
+\[X\sim Poisson(\lambda).\]
+So we can compute $P(X=0)$ directly as
+\begin{align*}
+    P(X=0)&=\frac{\lambda^0e^{-\lambda}}{0!}\\
+    &=e^{-1}\\
+    &=0.3678794412
+\end{align*}
+Solution: $P(X=0)=0.3678794412$.
+\subsection*{b) \normalfont Compute probability that no one enters the store from $12:00$ to $12:15$}
+Let $\lambda_r$ be the typical number of people to enter the store every fifteen minutes, and let $Y$ be the 
+discrete random variable for the number of people to enter the store from $12:00$ to $12:15$. 
+Then we have that
+\[\lambda_r=5\times\lambda=5(1)=5\]
+and
+\[Y\sim Poisson(\lambda_r=5).\]
+So we compute $P(Y=0)$ directly as
+\begin{align*}
+    P(Y=0)&=\frac{\lambda_r^0e^{-\lambda_r}}{0!}\\
+    &=e^{-5}\\
+    &=0.006737946999
+\end{align*}
+Solution: $P(Y=0)=0.006737946999$
+\subsection*{c)\normalfont Determine the probability that $\geq 3$ people enter the store from $12:00$
+to $12:15$ given that $>1$ person enter the store during the same interval.}
+Let $Y$ and $\lambda_r$ be as defined in 1.b. Then we have that
+\begin{align*}
+    P(Y\geq 3|Y>1)=\frac{P(Y\geq 3\cap Y>1)}{P(Y>1)}.
+\end{align*}
+Now, by the law of total probability we can see that
+\begin{align*}
+    P(Y\geq 3)=P(Y\geq 3\cap Y>1)+P(Y\geq 3\cap Y\leq 1).
+\end{align*}
+However, $Y\leq 1$ is mutually exclusive with $Y\geq 3$, so $P(Y\geq 3 \cap Y\leq 1)=0$, so we have that
+\[P(Y\geq 3)=P(Y\geq 3\cap Y>1).\]
+Which now allows us to compute $P(Y\geq 3|Y>1)$ directly.
+\begin{align*}
+    P(Y\geq 3|Y>1)&=\frac{P(Y\geq 3\cap Y>1)}{P(Y>1)}\\
+    &=\frac{P(Y\geq 3)}{P(Y>1)}\\
+    &=\frac{1-P(Y\leq 2)}{1-P(\leq 1)}\\
+    &=\frac{1-0.124652}{1-0.04042768} \text{\indent (Computed using the $R$ code found below)}\\
+    &=\frac{0.875348}{0.95957232}\\
+    &=0.9122272306
+\end{align*}
+With $P(Y\leq 2)$ and $P(Y\leq 1)$ computed as P\_1 and P\_2 respectively in the following $R$ code:
+\begin{verbatim}
+    P_1 <- ppois(2, 5)
+    P_2 <- ppois(1, 5)
+\end{verbatim}
+Solution: $P(Y\geq 3|Y>1)=0.9122272306$.
+
+\section*{Problem 2}
+\subsection*{a) \normalfont Create a probability distribution table for $X$.}
+Let $r=2$ be the number of red balls, $n=2$ be the number of balls drawn, and $N=9$ be the number
+of balls in the urn. Then we have that 
+\[X\sim hypergeometric(2, 9, 2).\]
+Furthermore, we have that
+\begin{align*}
+    &P(X=0)=\frac{{2 \choose 0}{7 \choose 2}}{{9 \choose 2}}=\frac{21}{36}=\frac{7}{12}\\
+    &P(X=1)=\frac{{2 \choose 1}{7 \choose 1}}{{9 \choose 2}}=\frac{14}{36}=\frac{7}{18}\\
+    &P(X=2)=\frac{{2 \choose 2}{7 \choose 0}}{{9 \choose 2}}=\frac{1}{36}
+\end{align*}
+Solution: So a probability distribution table for $X$ could be
+\begin{table}[h!]
+    \begin{center}
+        \begin{tabular}{c|c|c|c}
+            $x$ & 0 & 1 & 2\\
+            \hline
+            $P(X=x)$ & $\frac{7}{12}$ & $\frac{7}{18}$ & $\frac{1}{36}$
+        \end{tabular}
+    \end{center}
+\end{table}
+\subsection*{b) \normalfont Compute $E_{[X]}$.}
+Since $X\sim hypergeometric(2, 9, 2)$, we can compute $E_{[X]}$ directly as
+\begin{align*}
+    E_{[X]}=\frac{(2)(2)}{9}=\frac{4}{9}
+\end{align*}
+Solution: one would expect to draw $0.44444\dots$ red balls from the urn on average (under the conditions specified).
+
+\section*{Problem 3}
+\subsection*{a)\normalfont Compute $P(X\leq \frac{1}{2})$.}
+\begin{align*}
+    \int_0^{\frac{1}{2}}f(x)dx&=\int_0^{\frac{1}{2}}xdx\\
+    &=\frac{x^2}{2}\bigg|^{\frac{1}{2}}_0=\frac{1}{8}.
+\end{align*}
+Solution: $P(X\leq \frac{1}{2})=\frac{1}{8}$.
+\subsection*{b) \normalfont Compute $P(0\leq X\leq 2)$.}
+\begin{align*}
+    \int_{0}^{2}f(x)dx&=\int_{0}^{1}f(x)dx+\int_{1}^2f(x)dx\\
+    &=\int_0^1xdx + \int_1^2\frac{1}{4}dx\\
+    &=\frac{x^2}{2}\bigg|_0^1+\frac{x}{4}\bigg|_1^2\\
+    &=\frac{1}{2}+\frac{1}{2}-\frac{1}{4}\\
+    &=\frac{3}{4}
+\end{align*}
+Solution: $P(0\leq X\leq 2)=\frac{3}{4}$.
+
+\section*{Problem 4}
+\subsection*{a) \normalfont Find $c$ such that $f(x)$ is a probability density function.}
+We require that
+\begin{align*}
+    \int_0^2f(x)dx=1.
+\end{align*}
+This allows us to compute $c$ directly by
+\begin{align*}
+    1=\int_0^2f(x)dx&=\int_0^2c(2x-x^2)dx\\
+    &=c\left[\int_0^22xdx-\int_0^2x^2dx\right]\\
+    &=c\left[x^2\bigg|_0^2-\frac{x^3}{3}\bigg|_0^2\right]\\
+    &=c\left[4-\frac{8}{3}\right]\\
+    &\frac{4c}{3}=1\Rightarrow c=\frac{3}{4}.
+\end{align*}
+Solution: For $f(x)$ to be a valid probability density function, we require that $c=\frac{3}{4}$.
+\section*{Problem 5}
+\subsection*{a) \normalfont Compute probability that the region will see exactly 10 hurricanes over 2 years.}
+Let $X$ be the discrete random variable for the number of hurricanes the region experiences in 2 years
+and $\lambda=4.04$ be the number of hurricanes the region typically experiences per year. Finally, let $\lambda_r$ be the
+typical number of hurricanes over a 2 year period. Then we have that
+\[\lambda_r=2\times\lambda=8.08\]
+and
+\[X\sim Poisson(\lambda_r=8.08).\]
+Therefore, we compute the desired probability directly as
+\begin{align*}
+    P(X=10)&=\frac{\lambda_r^10}e^{-\lambda_r}{10!}\\
+    &=\frac{8.08^{10}e^{-8.08}}{10!}\\
+    &=0.101216464.
+\end{align*}
+Solution: $P(X=10)=0.101216464$.
+\subsection*{b) \normalfont Compute $E_{[X]}$.}
+With $X$ and $\lambda_r$ defined as in 5.a, we have that since $X\sim Poisson(\lambda_r)$, we have
+\begin{align*}
+    E_{[X]}&=\lambda_r
+    &=8.08
+\end{align*}
+Solution: we'd expect the region to experience 8.08 hurricanes over a 2 year period. 
+\section*{Problem 6}
+\subsection*{a) \normalfont Show that $f(x)$ is not a valid probability density function.}
+\begin{align*}
+    \int_1^2f(x)dx&=\int_1^22x-1dx\\
+    &=\left[x^2-x\right]\bigg|_1^2\\
+    &=2-0=2
+\end{align*}
+Solution: since the area under $f(x)$ is $2>1$ over the real numbers, $f(x)$ is not a probability density function.
+\section*{Problem 7}
+\subsection*{a) \normalfont Compute the probability that no defective screws appear in the display bin.}
+Let $N=500$ be the total number of screws in the case, $r=11$ be the known number of defective screws and
+$n=125$ be the number selected from $N$ without replacement for display. Then let $X$ be the random variable for
+the number of defective screws in the display bin. We have that
+\[X\sim hypergeometric(11, 500, 125).\]
+So we can compute $P(X=0)$ as 
+\begin{align*}
+    P(X=0)&=\frac{{11 \choose 0}{489 \choose 125}}{{500 \choose 125}}\\
+    &=\frac{2.155861\times 10^{119}}{5.298292\times 10^{120}}\\
+    &=0.04068972683
+\end{align*}
+Solution: $P(X=0)=0.04068972683$.
+\subsection*{b) \normalfont Compute $P(X\geq 2)$.}
+Let $N$, $n$, $r$ and $X$ be as defined in 7.a. Then we seek to compute directly $P(X\geq 2)$ as
+\begin{align*}
+    P(X\geq 2)&=1-P(X\leq 1)\\
+    &=1-\left(P(X=0)+P(X=1)\right)\\
+    &=1-\left(0.04068972683+\frac{{11 \choose 1}{489 \choose 124}}{{500 \choose 125}}\right) \text{\indent (from $7.a$)}\\
+    &=1-\left(0.04068972683+0.15328321751\right)\\
+    &=1-\left(0.1939729443\right)\\
+    &=0.8060270557
+\end{align*}
+Solution: $P(X\geq 2)=0.8060270557$.
+\subsection*{c) \normalfont Compute $P(X=2)+P(X=3)$.}
+Let $N$, $n$, $r$ and $X$ be as defined in 7.a. Then we compute $P(X=2)+P(X=3)$ by first computing each probability separately,
+and then adding the results.
+\begin{align*}
+    P(X=2)&=\frac{{11\choose 2}{489 \choose 123}}{{500 \choose 125}}\\
+    &=0.25966009524\\
+    P(X=3)&=\frac{{11\choose 3}{489\choose 122}}{{500\choose 125}}\\
+    &=0.26107513663\\
+    P(X=2)+P(X=3)&=0.25966009524+0.26107513663=0.5207352319
+\end{align*}
+Solution: $P(X=2)+P(X=3)=0.5207352319$.
+\section*{Problem 8}
+\subsection*{a)\normalfont Show that $E_{[X]}=\lambda$ for $X\sim Poisson(\lambda)$ using the provided $M_X(t)$ for the Poisson distribution.}
+We have that
+\[M_X(t)=e^{\lambda(e^t-1)}\]
+And we know that $E_{[X]}=\frac{d}{dt}M_X(t)\bigg|_{t=0}$, so we proceed to differentiate $M_X(t)$ with respect to $t$.
+\begin{align*}
+    E_{[X]}&=\frac{d}{dt}M_X(t)\\
+    &=\frac{d}{dt}e^{\lambda(e^t-1)}\\
+    &=\lambda e^te^{\lambda(e^t-1)}\\
+    &=\lambda e^{\lambda e^t-\lambda +t}
+\end{align*}
+Then we simply evaluate the equation at $t=0$
+\begin{align*}
+    E_{[X]}=\lambda e^{\lambda e^t-\lambda +t}\bigg|_{t=0}=\lambda e^{\lambda-\lambda}=\lambda e^0=\lambda.
+\end{align*}
+Solution: thus, by the above we have verifed that $E_{[X]}=\lambda$ for $X\sim Poisson(\lambda)$.
+\end{document}

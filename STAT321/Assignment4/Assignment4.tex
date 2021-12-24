@@ -1,0 +1,238 @@
+\documentclass[11pt, letterpaper]{article}
+\usepackage[margin=1.5cm]{geometry}
+\pagestyle{plain}
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage[shortlabels]{enumitem}
+\usepackage[makeroom]{cancel}
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+
+\begin{document}
+\title{Assignment 4\\\normalsize STAT321}
+\author{Connor Braun}
+
+\allowdisplaybreaks
+
+\maketitle
+
+\section*{Problem 1}
+\subsection*{\normalfont Let 
+\begin{align*}
+    f(x)=
+    \begin{cases}
+        2x,\indent 0\leq x\leq 1\\
+        0,\indent \text{otherwise}.
+    \end{cases}
+\end{align*}
+Find $E[X]$ and $VAR[X]$.}
+\begin{align*}
+    E[X]=\int_0^1xf(x)dx=\int_0^1x(2x)dx=\int_0^12x^2dx=\left.\frac{2x^3}{3}\right|_0^1=\frac{2}{3}\\
+\end{align*}
+Let $E[X]=\mu$. Then we have that
+\begin{align*}
+    VAR[X]&=E[x^2]-\mu^2=\int_0^1x^2f(x)dx-\mu^2=\int_0^1x^2(2x)dx-\mu^2=\int_0^12x^3dx-\mu^2=\left.\frac{x^4}{2}\right|_0^1-\mu^2=\frac{1}{2}-\left(\frac{2}{3}\right)^2\\
+    &=\frac{9}{18}-\frac{8}{18}=\frac{1}{18}.
+\end{align*}
+Solution: $E[X]=\frac{2}{3}$ and $VAR[X]=\frac{1}{18}$.
+\section*{Problem 2}
+\subsection*{\normalfont Let $X$ be a continuous random variable such that $X\sim uniform(10,20)$. If 
+$X\geq 13$, compute $P(X\leq 18)$.}
+\begin{align*}
+    P(X\leq 18|X\geq 13)=\frac{P(X\leq 18\cap X\geq 13)}{P(X\geq 13)}.
+\end{align*}
+By the law of total probability, we have that
+\begin{align*}
+    P(X\leq 18)&=P(X\leq 18 \cap X\geq 13) + P(X\leq 18 \cap X<13)\\
+    \Rightarrow P(X\leq 18 \cap X\geq 13)&=P(X\leq 18)-P(X<13)\\
+    &=\frac{18 - 10}{20 - 10} - \frac{13 - 10}{20 - 10}\\
+    &=\frac{18 - 13 - 10 + 10}{20 - 10}\\
+    &=\frac{5}{10}=\frac{1}{2}.
+\end{align*}
+Substituting into the conditional probability equation:
+\begin{align*}
+    P(X\leq 18|X\geq 13)&=\frac{P(X\leq 18\cap X\geq 13)}{P(X\geq 13)}\\
+    &=\frac{\frac{1}{2}}{P(X\geq 13)}\\
+    &=\frac{\frac{1}{2}}{1 - P(X<13)}\\
+    &=\frac{\frac{1}{2}}{\frac{10}{10} - \frac{13 - 10}{20 - 10}}\\
+    &=\frac{\frac{1}{2}}{\frac{10}{10} - \frac{3}{10}}\\
+    &=\frac{1}{2}\times\frac{10}{7}\\
+    &=\frac{10}{14}=\frac{5}{7}.
+\end{align*}
+Solution: Given that $X\geq 13$, $P(X\leq 18)=\frac{5}{7}$.
+\section*{Problem 3}
+Let $X$ be a normally-distributed continuous random variable with $\mu=131.9$ and $\sigma=20.3$ such that
+$X\sim normal(\mu,\sigma)$. Contextually, suppose $X$ models the finishing time for half-marathon participants,
+and that both $\mu$, $\sigma$ are in units minutes. \\\\
+{\bf a)} Compute $P(X<120)$, the probability that a given runner's finishing time is less than 2 hours. \\\\
+Since $X$ is continuous, we have that $P(X<120)=P(X\leq 120)$, so we compute the answer directly with
+the following line in R:
+\begin{verbatim}
+    pnorm(120, 131.9, 20.3)
+\end{verbatim}
+Solution: we have that $P(X<120)=0.2788682$.\\\\
+{\bf b)} What is the fastest a runner can finish and still be in the slowest $20\%$ of finishers?\\\\
+We seek to find the finishing time $x_0$ such that $P(X\leq x_0)=0.2$. We compute the answer directly with
+the following line in R:
+\begin{verbatim}
+    qnorm(0.2, 131.9, 20.3)
+\end{verbatim}
+Solution: we have that $x_0$ such that $P(X<x_0)=0.2$ is $x_0=114.8151$ minutes.\\\\
+{\bf c)} What is the probability that exactly 4 of 10 finishers (randomly selected) had a finishing time
+of less than 2 hours?\\\\
+From 3.a, we know that
+\begin{align*}
+    P(X<120)=0.2788682.
+\end{align*}
+Let $Y$ be the discrete random variable for the number of runners out of 10 randomly selected participants
+who finished the half-marathon in under two hours. Then we have that 
+\begin{align*}
+    Y\sim binomial(10, P(X<120))=binomial(10, 0.2788682).
+\end{align*}
+So we compute $P(Y=4)$ directly.
+\begin{align*}
+    P(Y=4)={10\choose 4}(0.2788682)^4(1-0.2788682)^6=0.1786089231.
+\end{align*}
+Solution: the probability that exactly 4 of 10 randomly selected participants finish in under 2 hours is 
+$P(Y=4)=0.1786089231$.
+\section*{Problem 4}
+Let $X$ be a continuous random variable for the number of minutes it takes to observe 10 pedestrians using
+a particular crosswalk. Suppose that $\alpha=10$ and $\beta=\frac{1}{2}$ such that
+\begin{align*}
+    X\sim gamma(\alpha,\beta)=gamma(10,\frac{1}{2}).
+\end{align*}
+{\bf a)} Find $P(X<10)$. \\\\
+This probability is most easily computed directly using the following line in R:
+\begin{verbatim}
+    pgamma(10, 10, 2)
+\end{verbatim}
+Solution: The probability that it takes fewer than 10 minutes to observe 10 pedestrians is $P(X<10)=0.9950046$.\\\\
+{\bf b)} Compute $E[X]$.\\\\
+For any $\xi\sim gamma(v,\omega)$, we have that $E[\xi]=v\omega$. Therefore
+\begin{align*}
+    E[X]=\alpha\beta=10\times\frac{1}{2}=5.
+\end{align*}
+Solution: We'd expect it to take about 5 minutes to observe 10 pedestrians on the crosswalk.
+\section*{Problem 5}
+Let $c\in\mathbb{R}$ and
+\begin{align*}
+    f(x)=
+    \begin{cases}
+        cx^4e^{-\frac{x}{2}},\indent x\geq 0\\
+        0,\indent \text{elsewhere}
+    \end{cases}
+\end{align*}
+Find the value of $c$ that makes $f(x)$ a valid probability density function.\\\\
+For $f(x)$ to be a valid probability density function, we require that
+\begin{align*}
+    \int_0^{+\infty}f(x)dx=1.
+\end{align*}
+We will use the fact that $\forall_\alpha\in\mathbb{Z}$ and $\beta\in\mathbb{R}$,
+\begin{align*}
+    \int_0^{+\infty}x^{\alpha-1}e^{-\frac{x}{\beta}}dx=\beta^\alpha(\alpha - 1)!.
+\end{align*}
+Using our requirement and identity, we can compute $c$ directly.
+\begin{align*}
+    1&=\int_0^{+\infty}cx^4e^{-\frac{x}{2}}dx=c\int_0^{+\infty}x^4e^{-\frac{x}{2}}dx\\
+    &=c\left(2^5(4)!\right)\\
+    &=c\times 32\times 24\\
+    &=768c\\
+    \Rightarrow c&=\frac{1}{768}
+\end{align*}
+Solution: for $f(x)$ to be a valid probability density function, we require that $c=\frac{1}{768}$.
+\section*{Problem 6}
+Let $X$ be a continuous random variable for the length of a call to an emergency medical services
+dispatch centre in minutes. Suppose that $\beta=2.25$ so that
+\begin{align*}
+    X\sim exponential(\beta).
+\end{align*}
+{\bf a)} Compute $P(X>4)$.\\\\
+First, $P(X>4)=1-P(X\leq 4)$, which is most easily computed using the following line in R:
+\begin{verbatim}
+    1 - pexp(4, 1/2.25)
+\end{verbatim}
+Solution: The probability that a call will last more than 4 minutes is $P(X>4)=0.1690133$.\\\\
+{\bf b)} Compute $P(X<1|X<3)$.\\\\
+By the definition of conditional probability
+\begin{align*}
+    P(X<1|X<3)&=\frac{P(X<1\cap X<3)}{P(X<3)}\\
+    &=\frac{P(X<1)}{P(X<3)},\text{\indent (since if $X<1$, then $X<3$.)}
+\end{align*}
+We can compute this ratio most easily using the following line in R:
+\begin{verbatim}
+    pexp(1, 1/2,25)/pexp(3,1/2.25)
+\end{verbatim}
+Solution: given that a particular call lasted less than 3 minutes, the probability that the same call
+lasted less than 1 minute is $P(X<1|X<3)=0.5343126$.\\\\
+{\bf c)} Compute call duration $x_0$ such that $P(X>x_0)=0.1$.\\\\
+Firstly, we have that $P(X>x_0)=1-P(X\leq x_0)$, where $P(X\leq x_0)=1-0.1=0.9$. Hence, we can then 
+compute $x_0$ directly using the following line in R:
+\begin{verbatim}
+    qexp(0.9, 1/2.25)
+\end{verbatim}
+Solution: 10\% of calls to the dispatch centre will last longer (or equivalently, 90\% will be shorter) 
+than 5.180816 minutes.
+\section*{Problem 7}
+Let $X$ be the discrete random variable for the number of times an office printer is used every hour. 
+Suppose that $\lambda=4.3$ such that
+\begin{align*}
+    X\sim poisson(\lambda).
+\end{align*}
+Next, let $W$ be the continuous random variable for the duration of any given interval between printer uses in hours.\\\\
+{\bf a)} What type of distribution best models the behavior of $W$? What are the parameters for this example?\\\\
+Solution: Let $\beta=\frac{1}{\lambda}$, then $W\sim exponential(\beta=\frac{1}{\lambda}=\frac{1}{4.3})$.\\\\
+{\bf b)} Compute $P(W>1)$.\\\\
+We have that $P(W>1)=1-P(W\leq 1)$, which we can compute directly using the following line in R:
+\begin{verbatim}
+    1 - pexp(1, 4.3)
+\end{verbatim}
+Solution: $P(W>1)=0.01356856$.\\\\
+{\bf c)} Compute $P(W<\frac{1}{2})$.\\\\
+$P(W<\frac{1}{2})$ can be computed directly using the following line of code in R:
+\begin{verbatim}
+    pexp(1/2, 4.3)
+\end{verbatim}
+Solution: $P(W<\frac{1}{2})=0.8835158$.
+\section*{Problem 8}
+Let $X$ be the continuous random variable modeling the proportion of a large sample population of 
+people with an advanced stage of a certain type of cancer who are still alive after five years of monitoring. 
+Suppose that $\alpha=0.66$ and $\beta=0.34$ such that
+\begin{align*}
+    X\sim beta(\alpha, \beta).
+\end{align*} 
+What is the probability that more than 75\% of the initial population are still alive after the five year period?
+In other words, compute $P(X>0.75)$.\\\\
+First, we have that $P(X>0.75)=1-P(X\leq 0.75)$. Then we can compute $P(X>0.75)$ most easily using the following
+line in R:
+\begin{verbatim}
+    1 - pbeta(0.75, 0.66, 0.34)
+\end{verbatim}
+Solution: The probability that more than 75\% of the initial population survived the five year period is $P(X>0.75)=0.5243433$.
+\section*{Problem 9}
+Let $c\in\mathbb{R}$ and $f(x,y)$ be the multivariate function given by
+\begin{align*}
+    f(x,y)=
+    \begin{cases}
+        \frac{x}{5}+cy,\indent 0<x<1,\space 0<y<5\\
+        0,\indent elsewhere
+    \end{cases}
+\end{align*}
+Find the value of $c$ which makes $f(x,y)$ a valid probability density function.\\\\
+For $f(x,y)$ to be a valid probability density function, we require that
+\begin{align*}
+    1&=\int_0^5\int_0^1f(x,y)dxdy
+\end{align*}
+Which we can compute directly as follows
+\begin{align*}
+    1&=\int_0^5\int_0^1f(x,y)dxdy\\
+    &=\int_0^5\int_0^1(\frac{x}{5}+cy)dxdy\\
+    &=\int_0^5\int_0^1\frac{x}{5}dxdy+c\int_0^5\int_0^1ydxdy\\
+    &=\int_0^5\left.\frac{x^2}{10}\right|_{0}^1dy+c\int_0^5yx\bigg|_0^1dy\\
+    &=\int_0^5\frac{1}{10}dy+c\int_0^5ydy\\
+    &=\frac{y}{10}\bigg|_0^5+c\left(\left.\frac{y^2}{2}\right|_0^5\right)\\
+    &=\frac{1}{2}+c\frac{25}{2}\\
+    \Rightarrow 2&=25c+1\\
+    \Rightarrow c&=\frac{1}{25}
+\end{align*}
+Solution: for $f(x,y)$ to be a valid probability density function, we require that $c=\frac{1}{25}$.
+\end{document}

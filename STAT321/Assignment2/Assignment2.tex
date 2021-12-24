@@ -1,0 +1,230 @@
+\documentclass[11pt, letterpaper]{article}
+\usepackage[margin=1.5cm]{geometry}
+\pagestyle{plain}
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage[shortlabels]{enumitem}
+\usepackage[makeroom]{cancel}
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+
+\begin{document}
+\title{Assignment 2\\\normalsize STAT321}
+\author{Connor Braun}
+
+\allowdisplaybreaks
+
+\maketitle
+
+\section*{Problem 1}
+\subsection*{a) \normalfont Compute $E[X]$. Let $x_1=-10$, $x_2=0$ and $x_3=5$. Then let $1\leq i\leq 3$ where $i\in \mathbb{Z}$. Then}
+\[E[X]=\sum_{i=1}^{3}x_iP(X=x_i)=-10(\frac{3}{10})+0(\frac{1}{2})+5(\frac{1}{5})=-3+1=-2\]
+Solution: $E[X]=-2$.
+\subsection*{b) \normalfont Compute $VAR[X]$.}
+\[VAR[X]=E[X^2]-E[X]^2=100(\frac{3}{10})+0(\frac{1}{2})+25(\frac{1}{5})-(-2)^2=31\]
+Solution: $VAR[X]=31$.
+\subsection*{c) \normalfont Compute $E[3X]$}
+\[E[3X]=3E[X]=3(-2)=-6\]
+Solution: $E[3X]=-6$.
+
+\section*{Problem 2}
+\subsection*{a) \normalfont Construct a probability distribution table for $X$.}
+$X\sim binomial(4,\space \frac{1}{2})$. Therefore, we have that
+\begin{align*}
+    P(X=0)&={4\choose 0}(\frac{1}{2})^0(1-\frac{1}{2})^4=\frac{1}{16}\\
+    P(X=1)&={4\choose 1}(\frac{1}{2})^1(1-\frac{1}{2})^3=\frac{1}{4}\\
+    P(X=2)&={4\choose 2}(\frac{1}{2})^2(1-\frac{1}{2})^2=\frac{3}{8}\\
+    P(X=3)&={4\choose 3}(\frac{1}{2})^3(1-\frac{1}{2})^1=\frac{1}{4}\\
+    P(X=4)&={4\choose 4}(\frac{1}{2})^4(1-\frac{1}{2})^0=\frac{1}{16}
+\end{align*}
+So a probability distribution table for the described experiment could be 
+\begin{table}[h!]
+    \begin{center}
+        \begin{tabular}{c|c|c|c|c|c}
+            $x$ & 0 & 1 & 2 & 3 & 4\\
+            \hline
+            $P(X=x)$ & $\frac{1}{16}$ & $\frac{1}{4}$ & $\frac{3}{8}$ & $\frac{1}{4}$ & $\frac{1}{16}$
+        \end{tabular}
+    \end{center}
+\end{table}
+\subsection*{b) \normalfont Create a probability distribution graph for $X$.}
+\begin{center}
+  \makebox[\textwidth]{\includegraphics[width=150mm]{figure_1.png}}
+\end{center}
+The probability distribution graph of random variable $X$ is symmetric.
+\subsection*{c) \normalfont Compute $P(X\geq 2)$.}
+\[P(X\geq 2)=P(X=2)+P(X=3)+P(X=4)=\frac{3}{8}+\frac{1}{4}+\frac{1}{16}=\frac{11}{16}\]
+Solution: $P(X\geq 2)=\frac{11}{16}$.
+
+\section*{Problem 3}
+Let $X$ be the random variable for how many defective screws are found in a box. 
+We have that $X\sim binomial(20,\space \frac{1}{100})$.
+\subsection*{a) \normalfont Compute $P(X=0)$.}
+\[P(X=0)={20\choose 0}\left(\frac{1}{100}\right)^0\left(1-\frac{1}{100}\right)^{20}=(99/100)^20=0.81791\]
+Solution: $P(X=0)=0.81791$.
+\subsection*{b) \normalfont Compute $P(X=1)$.}
+\[P(X=1)={20\choose 1}\left(\frac{1}{100}\right)\left(\frac{99}{100}\right)^{19}=0.16523\]
+Solution $P(X=1)=0.16523$.
+\subsection*{c) \normalfont Compute $P(X>1)$.}
+$P(X>1)=1-P(X>1)^C=1-P(X\leq 1)=1-(P(X=0)+P(X=1))$.
+\begin{align*}
+P(X>1)&=1-0.81791-0.16523 \text{\indent (from part 3.a and 3.b).}\\
+&=0.01686
+\end{align*}
+Solution: the probability that any given box of screws will be eligible for a refund is $0.0169$, or $1.69\%$.
+
+\section*{Problem 4}
+Let $H_1$, $H_2$ be the events that the first and second coin (respectively) lands heads up. Then let
+$P(T_1)=1-P(H_1)=P(H_1)^C$ and $P(T_2)=1-P(H_2)=P(H_2)^C$ be the probability that the first and second 
+coin (respectively) land tails. Then $P(H_1)=0.7$, $P(T_1)=0.3$, $P(H_2)=0.8$ and $P(T_2)=0.2$. Furthermore,
+\begin{align*}
+    P(X=2)&=P(H_1\cap H_2)=(0.7)(0.8)=0.56\\
+    P(X=1)&=P(H_1\cap T_2) + P(T_1\cap H_2)=(0.7)(0.2)+(0.3)(0.8)=0.38\\
+    P(X=0)&=P(T_1\cap T_2)=(0.3)(0.2)=0.06
+\end{align*}
+\subsection*{a) \normalfont Compute $E[X]$.}
+\begin{align*}
+E[X]&=2P(X=2)+P(X=1)+0P(X=0)\\
+&=2(0.56)+1(0.38)+0\\
+&=1.5
+\end{align*}
+Solution: $E[X]=1.5$.
+\subsection*{b) \normalfont Compute $SD[X]$.}
+\begin{align*}
+    SD[X]&=\sqrt{VAR[X]}\\
+    &=\sqrt{E[X^2]-E[X]^2}\\
+    &=\sqrt{4(0.56)+1(0.38)-\frac{9}{4}}\\
+    &=0.60828
+\end{align*}
+Solution: $SD[X]=0.60828$.
+
+\section*{Problem 5}
+Let $X$ be the number of trials for Bob to win $r$ rounds. Suppose that the probability of
+winning is $\frac{1}{6}$.
+\subsection*{a) \normalfont Let $r=1$. Compute $P(X=4)$.}
+Here we have that $X\sim neg.\space binomial(1,\space \frac{1}{6})$, so 
+\[P(X=4)={3\choose 0}\left(\frac{1}{6}\right)\left(\frac{5}{6}\right)^3=0.09645\]
+Solution: The probability that Bob's first win is on the fourth round is $0.09645$.
+\subsection*{b) \normalfont Let $r=2$. Compute $P(X=3)$.}
+Now we have that $X\sim neg.\space binomial(2,\space \frac{1}{6})$, so
+\[P(X=3)={2\choose 1}\left(\frac{1}{6}\right)^2\left(\frac{5}{6}\right)^1=0.04629\]
+Solution: The probability that Bob's second win is on the third round is $0.04629$.
+
+\section*{Problem 6}
+Note that $X\sim binomial(2,\space \frac{2}{9})$.
+\subsection*{a) \normalfont Create a probability distribution table for $X$.}
+\begin{align*}
+    P(X=0)&={2\choose 0}\left(\frac{2}{9}\right)^0\left(\frac{7}{9}\right)^2=0.60494\\
+    P(X=1)&={2\choose 1}\left(\frac{2}{9}\right)^1\left(\frac{7}{9}\right)^1=0.34568\\
+    P(X=2)&={2\choose 2}\left(\frac{2}{9}\right)^2\left(\frac{7}{9}\right)^0=0.04938
+\end{align*}
+\begin{table}[h!]
+    \begin{center}
+        \begin{tabular}{c|c|c|c}
+            $x$ & 0 & 1 & 2\\
+            \hline
+            $P(X=x)$ & $0.60494$ & $0.34568$ & $0.04938$ 
+        \end{tabular}
+    \end{center}
+\end{table}
+\subsection*{b) \normalfont Compute $E[X]$.}
+For any discrete random variable $Y$ where $Y\sim binomial(n,\space p)$, we have that $E[Y]=np$. Hence
+\[E[X]=2\left(\frac{2}{9}\right)=\frac{4}{9}.\]
+Solution: $E[X]=\frac{4}{9}$.
+
+\section*{Problem 7}
+\subsection*{a) Compute $E[4Y-2]$.}
+\begin{align*}
+    E[4Y-2]&=E[4Y]+E[-2]\\
+    &=4E[Y]-2\\
+    &=4\left(120\times \frac{3}{10}\right)-2\\
+    &=142
+\end{align*}
+Solution: $E[4Y-2]=142$.
+\subsection*{b) Compute $VAR[4Y-2]$.}
+\begin{align*}
+    VAR[4Y-2]&=VAR[4Y]+VAR[-2]\\
+    &=16VAR[Y]\\
+    &=16\left(120\times\left(\frac{3}{10}\right)\left(\frac{7}{10}\right)\right)\\
+    &=403.2
+\end{align*}
+Solution: $VAR[X]=403.2$.
+
+\section*{Problem 8}
+Let $Y$ be the random variable for the number of yellow M\&M's in a pack of 23, $p=0.24=\frac{6}{25}$. Then $Y\sim binomial(23,\space \frac{6}{25})$.
+\subsection*{a) \normalfont Compute $P(Y>10)$.}
+\[P(Y>10)=\sum_{n=11}^{23}P(Y=n)=\sum_{n=11}^{23}{23\choose n}p^n(1-p)^{23-n}\]
+We will compute this with the following code in $R$:
+\begin{verbatim}
+    x<-11:23
+    p<-sum(dbinom(x, 23, 0.24))
+\end{verbatim}
+Where here the variable $p=P(Y>10)$ takes the value $0.01087513$.\\
+Solution: $P(Y>10)=0.01087513$.
+\subsection*{b) \normalfont Compute $P(5\leq Y\leq 10)$.}
+\[P(5\leq Y\leq 10)=\sum_{n=5}^{10}P(Y=n)=\sum_{n=5}^{10}{23\choose n}p^n(1-p)^{23-n}\]
+We will compute this with the following code in $R$:
+\begin{verbatim}
+    x<-5:10
+    p<-sum(dbinom(x, 23, 0.24))
+\end{verbatim}
+Where here the variable $p=P(5\leq Y\leq 10)$ takes the value $0.6674023$.\\
+Solution: $P(5\leq Y\leq 10)=0.6674023$.
+\subsection*{c) \normalfont Compute $P(Y=7|5\leq Y\leq 10)$.}
+By the law of total probability, we have that
+\begin{align*}
+    P(Y=7)&=P(Y=7\cap (5\leq Y\leq 10))+P(Y=7\cap(5\leq Y\leq 10)^C)\\
+\end{align*}
+However, the events that $Y=7$ and $(5\leq Y\leq 10)^C$ are mutually exclusive, since $Y$ cannot simultaneously
+be $7$ and not in the interval $[5,10]$. Hence, $P(Y=7\cap 5\leq Y\leq 10)=0$, so we have
+\[P(Y=7)=P(Y=y\cap 5\leq Y\leq 10)\]
+Then we can compute $P(Y=7|5\leq Y\leq 10)$ directly:
+\begin{align*}
+    P(Y=7|5\leq Y\leq 10)&=\frac{P(Y=7\cap 5\leq Y\leq 10)}{P(5\leq Y\leq 10)}\\
+    &=\frac{P(Y=7)}{P(5\leq Y\leq 10)}\\
+    &=\frac{{23\choose 7}p^7(1-p)^{16}}{\sum_{n=5}^{10}{23\choose n}p^n(1-p)^{23-n}}\\
+    &=\frac{0.1393}{0.6674023} \text{\indent (taking the denominator from 8.b).}\\
+    &=0.20872
+\end{align*}
+Solution: $P(Y=7|5\leq Y\leq 10)=0.20872$.
+
+\section*{Problem 9}
+\subsection*{a) \normalfont Let $Y$ be the number of hit targets out of 3 trials. The probability that Bob 
+hits the target is 0.7, so $Y\sim binomial(3,\space 0.7)$. Compute $P(Y=3)$.}
+\[P(Y=3)={3\choose 3}(0.7)^3(0.3)^0=0.343\]
+Solution: $P(Y=3)=0.343$.
+\subsection*{b) \normalfont Let $X=Y+1$ be the random variable for the number of the trial on which
+Bob misses the target. Compute $E[Y]$.}
+First, we have that $X\sim geometric(\frac{3}{10})$. Then, we can show that:
+\begin{align*}
+    P(X\geq 4)&=1-P(X\geq 4)^C\\
+    &=1-P(X<4)\\
+    &=1-P(X=1)-P(X=2)-P(X=3)\\
+    &=1-\left(\left(\frac{7}{10}\right)^0\left(\frac{3}{10}\right)^1+\left(\frac{7}{10}\right)^1\left(\frac{3}{10}\right)^1+\left(\frac{7}{10}\right)^2\left(\frac{3}{10}\right)^1\right)\\
+    &=1-\left(\frac{3}{10}\right)-\left(\frac{21}{100}\right)-\left(\frac{147}{1000}\right)\\
+    &=0.3430
+\end{align*}
+\newpage
+Then, we have that
+\begin{align*}
+    P(X=3)=\left(\frac{147}{1000}\right)\text{\indent (as found above in 9.b).}\\
+    P(X=2)=\left(\frac{21}{100}\right)\text{\indent (as found above in 9.b).}\\
+    P(X=1)=\left(\frac{3}{10}\right)\text{\indent (as found above in 9.b).}
+\end{align*}
+Note that $P(X\geq 4)$ is the event that Bob's first miss would occur after his third hit, i.e., after
+he had already hit all three shots. Then we can construct the following probability distribution table.
+\begin{table}[h!]
+    \begin{center}
+        \begin{tabular}{c|c|c|c|c}
+            $y$ & 0 & 1 & 2 & 3\\
+            \hline
+            $x$ & 1 & 2 & 3 & $\geq4$\\
+            \hline
+            $P(X=x)$ & $\frac{3}{10}$ & $\frac{21}{100}$ & $\frac{147}{1000}$ & $0.3430$ 
+        \end{tabular}
+    \end{center}
+\end{table}
+And proceed to compute $E[Y]$ by the conventional formula:
+\[E[Y]=0P(Y=0)+1P(Y=1)+2P(Y=2)+3P(Y=3)=\frac{21}{100}+\frac{294}{1000}+1.0290=1.5330\]
+Solution: We'd expect Bob to hit an average of $1.5330$ shots in the long run. 
+\end{document}

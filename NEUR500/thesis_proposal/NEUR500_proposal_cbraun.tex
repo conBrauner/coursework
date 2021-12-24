@@ -1,0 +1,80 @@
+\documentclass[11pt, letterpaper]{article}
+\usepackage[margin=2cm]{geometry}
+\pagestyle{plain}
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{mathptmx}
+\usepackage[makeroom]{cancel}
+
+\allowdisplaybreaks
+
+\title{The quantification of navigation independent neuronal phase precession}
+\author{Connor Braun}
+\date{\vspace{-5ex}}
+
+
+\begin{document}
+
+\maketitle
+\fontsize{12}{12}\selectfont
+\pagenumbering{gobble}
+
+% Topic sentence 
+{\bf Introduction.} For the last thirty years, hippocampal place cells have been consistently observed to exhibit phase 
+precession with respect to theta-range (8-12 Hz) local field potential oscillations. 
+% Expository sentence -- flip subject order
+That is, as an organism traverses a place field, a corresponding place cell bursts progressively earlier
+on each subsequent theta cycle. 
+% Generality of phase precession
+In accordance with the temporal coding hypothesis, phase precession has been implicated as a putative 
+mechanism for encoding sequence structure of events into memory, suggesting that it could be a more 
+general neurocomputational phenomenon and not strictly limited to spatial behaviors. To date, phase precession has been observed primarily during such spatial behaviors as traversing linear tracks or 
+open fields, but there is very limited evidence to suggest that pyramidal cells of the CA1 exhibit phase precession 
+during specific non-spatial behaviors including REM sleep and stationary head wheel running. As such, 
+it is unknown to what extent phase precession dynamics might be a more general coding strategy independent of navigation.
+% Research question
+%The project proposed herein seeks to contribute to the determination of phase precession as a general 
+%neurocomputational mechanism by quantifying it in hippocampal pyramidal neuron time series independent
+%of spatial behavior.
+\\
+
+% Hypothesis
+{\bf Hypothesis.} If hippocampal theta phase precession is a general mechanism for temporal encoding, then it will not only
+be identifiable, but quantifiable independent of navigational behaviors.\\
+
+{\bf Objectives.} The problem is that conventional methods of identifying phase precession rely on {\it a priori} knowledge of neural tuning so that spike timing
+with respect to local theta oscillations can be fit to some function of behavior.
+This curtails our ability to investigate the generality of phase precession, since neuron-behavior tuning
+is typically not knowable beforehand. For this reason, we first seek to develop a behavior-agnostic algorithm 
+for quantification of hippocampal theta phase precession. Next, we will construct a computational model of neuronal phase precession 
+which will allow us to simulate data {\it in silico} independent of any notion of concurrent behavior. We can then proceed to characterize 
+the biologically-relevant conditions under which our metric returns type I or type II error. Finally, our quantification will be used
+to seek phase precession dynamics in hippocampal single-unit recordings from animals undergoing REM sleep or other
+non-navigational behaviors. \\
+
+{\bf Methodology.} The quantification algorithm will rely on theoretical underpinnings from discrete dynamical systems.
+Our initial neuron modeling strategy will be to numerically integrate a stochastic leaky integrate-and-fire model with a subthreshold spike frequency adaptation term using the 
+Advanced Research Computing cluster at the University of Calgary.
+This model will be made to precess in phase with respect to an idealized (sinusoidal) theta rhythm by a dual linear oscillator input. Furthermore, the complete model will have parameters controlling biologically relevant dynamic phenomena, such as noise characteristics, excitability, 
+spike frequency adaptation and phase precession characteristics. This will allow us to define biologically relevant conditions
+under which our quantification algorithm is type I or type II erroneous.  
+The complete quantification algorithm will then serve as a dependent variable to seek and quantify phase precession
+in single-unit recordings (alongside concurrent extracellular local field potential recordings) taken from neurons in the hippocampal formation. 
+Organism behavior at the time of these recordings will be the independent variable; categorically either navigational or non-navigational. These data will be 
+obtained from the Collaborative Research in Computational Neuroscience database. Single-unit place cell recordings from entorhinal cortex, CA1 and CA3
+taken from animals undergoing REM sleep will also be contributed by David Dupret lab, University of Oxford --- a close collaborator of the Nicola lab.
+\\
+
+{\bf Significance.} We expect to successfully develop a behavior independent quantification and identify navigation independent phase precession in the hippocampus, liberating it as a 
+primarily navigational phenomenon. In doing so, this project will potentially yield valuable insight not only into how living systems form memories at the 
+level of neural dynamics, but also into principles of neural coding at large. 
+
+%This involves the development of a computational neuron model
+%which adequately captures the behavior of place cells under an experimentally set phase relationship with
+%a simulated theta rhythm. Moreover, the parameters of this model must map to biologically relevant variables, 
+%such that we can define the conditions which result in type I or type II error. After the algorithm has been
+%determined suitably robust to biological variaiton, it will serve as a dependent variable with which to quantify
+%phase precession in navigation-independent hippocampal pyramidal time series.
+\end{document}
+

@@ -1,0 +1,224 @@
+\documentclass[11pt, letterpaper]{article}
+\usepackage[margin=1.5cm]{geometry}
+\pagestyle{plain}
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage[shortlabels]{enumitem}
+
+\begin{document}
+\title{Assignment 2\\\normalsize MATH271}
+\author{Connor Braun}
+
+\allowdisplaybreaks
+
+\theoremstyle{definition}
+\newtheorem*{prf}{Proof}
+\newtheorem*{sol}{Solution}
+\newtheorem{case}{Case}
+\newtheoremstyle{mythrm}
+    {0pt}{0pt}
+    {\hangindent 2.5em}
+    {}
+    {\bfseries}
+    {.}
+    {0.5em}
+    {}
+\theoremstyle{mythrm}
+\newtheorem{lemma}{Lemma}
+
+\maketitle
+\section*{Problem 1}
+
+\subsection*{a) Prove that $5^{2n+1}+2^{2n+1}$ is divisible by $7$ for all integers $n\geq 0$ by induction on $n$.}
+\begin{prf}[by induction]~\\
+    {\bf Basis} ($n=0$). Suppose $n$ is an integer but specifically $n=0$. Then we have the following
+    \begin{align*}
+        5^{2n+1}+2^{2n+1} &= 5^{2(0)+1}+2^{2(0)+1} &\text{\indent Substituting $n=0$} \\
+        &=5^1+2^1 \\
+        &=7 \\
+        &=7(1)
+    \end{align*}
+    Where since both 7 and 1 are integers with $7\neq 0$ we have that $7|5^{2n+1}+2^{2n+1}$ in the case of $n=0$.
+
+    \noindent{\bf Inductive step.} Now, suppose that $\forall_{k} \in \mathbb{Z}$ where $k \geq 0$ we have that 7 divides $5^{2k+1}+2^{2k+1}$. That is:
+    \begin{align*}
+        5^{2k+1}+2^{2k+1} &= 7a \text{\indent (Inductive hypothesis)}
+    \end{align*}
+    for some integer $a$. Let the acronym IH henceforth stand for 'Inductive Hypothesis'. We want to show that
+    \begin{align*}
+        5^{2(k+1)+1}+2^{2(k+1)+1} &= 5^{2k+3}+2^{2k+3} \\
+        &= 7b
+    \end{align*}
+    for some integer $b$. Starting with $5^{2k+3}+2^{2k+3}$ we can derive the desired equality as follows:
+    \begin{align*}
+        5^{2k+3}+2^{2k+3} &= 5^2\cdot 5^{2k+1}+2^2\cdot 2^{2k+1} \\
+        &= 5^2(5^{2k+1}+2^{2k+1}) -21\cdot 2^{2k+1}\\
+        &= 5^2(7a)-21\cdot 2^{2k+1} &\text{\indent by the IH}\\
+        &= 7(25a - 3\cdot 2^{2k+1}) &\text{\indent factoring out 7}\\
+        &= 7b. &\text{\indent setting $b=25a - 3\cdot 2^{2k+1}$}
+    \end{align*}
+    Now since $b=25a - 3\cdot 2^{2k+1}$ is an integer, we've shown that $7| 5^{2k+3}+2^{2k+3}$ given the IH. 
+    Furthermore, by the base case of $n=0$, the inductive step and the principle of mathematical induction, we have that
+    $5^{2n+1}+2^{2n+1}$ is divisible by $7$ for all integers $n\geq 0$.
+\end{prf}
+\subsection*{b) Prove that $\sum_{i=1}^{n}\frac{1}{\sqrt{i}}>2(\sqrt{n+1}-1)$ for all integers $n\geq 1$ by induction on $n$.}
+\begin{prf}[by induction]~\\
+    {\bf Basis} ($n=0$). Suppose $n$ is an integer but specifically $n=1$. Then we have that
+    \begin{align*}
+        \sum_{i=1}^n\frac{1}{\sqrt{i}} &= \sum_{i=1}^1\frac{1}{\sqrt{i}} \text{\indent Substituting $n=1$}\\
+        &= \frac{1}{\sqrt{1}}\\
+        &= \frac{1}{1}\\
+        &= 1\\
+        &> \sqrt{8}-2
+    \end{align*}
+    It is worth pausing to explain why $1>\sqrt{8}-2$. To see why this strict inequality holds, consider the following
+    \begin{align*}
+        4&<8<9\\
+        \sqrt{4}&<\sqrt{8}<\sqrt{9}\\
+        2&<\sqrt{8}<3\\
+        0&<\sqrt{8}-2<1
+    \end{align*}
+    With this fact, we return to where we left off in establishing the base case for $n=1$:
+    \begin{align*}
+        \sum_{i=1}^1\frac{1}{\sqrt{i}} &> \sqrt{8}-2\\
+        &= \sqrt{4\cdot 2}-2\\
+        &= 2\sqrt{2}-2\\
+        &= 2(\sqrt{2}-1)\\
+        &= 2(\sqrt{n+1}-1)
+    \end{align*}
+    So we have that $\sum_{i=1}^{n}\frac{1}{\sqrt{i}}>2(\sqrt{n+1}-1)$ holds for the base case of $n=1$.
+
+    \noindent{\bf Inductive step.} Now, suppose that $\forall_k \in \mathbb{Z}$ where $k\geq 1$ we have that 
+    \[\sum_{i=1}^{k}\frac{1}{\sqrt{i}}>2(\sqrt{k+1}-1) \text{\indent (Inductive hypothesis)}\]
+    From this, we aim to establish that 
+    \[\sum_{i=1}^{k+1}\frac{1}{\sqrt{i}}>2(\sqrt{k+2}-1).\]
+    We can derive the desired inequality by starting with the trivial fact that $9>8$ as follows:
+    \begin{align*}
+        9 &>8\\
+        4k^2+12k+9 &> 4k^2+12k+8 &\text{\indent adding $4k^2+12k$ to both sides}\\
+        4(k^2+3k+\frac{9}{4}) &> 4(k^2+3k+2) &\text{\indent factoring 4 from both sides}\\
+        4(k+\frac{3}{2})^2 &> 4(k+2)(k+1) &\text{\indent factoring each quadratic separately}\\
+        (2k+3)^2 &> 4(k+2)(k+1) &\text{\indent distributing the $4$ on the left hand side}\\
+        2k+3 &> 2\sqrt{k+2}\sqrt{k+1} &\text{\indent taking the square root of both sides}\\
+        \frac{2k+3}{\sqrt{k+1}} &> 2\sqrt{k+2} &\text{\indent dividing both sides by $\sqrt{k+1}$}\\
+        \frac{2k+3}{\sqrt{k+1}}-2 &> 2\sqrt{k+2}-2 &\text{\indent subtracting 2 from both sides}\\
+        \frac{2k+2+1}{\sqrt{k+1}}-2 &> 2(\sqrt{k+2}-1) &\text{\indent expanding the numerator on the left hand side}\\
+        \frac{2(k+1)}{\sqrt{k+1}}-2+\frac{1}{\sqrt{k+1}} &> 2(\sqrt{k+2}-1) &\text{\indent splitting the fraction on the left hand side and then factoring a 2}
+    \end{align*}
+    For the next step we simply multiply the first term on the left hand side by $\frac{\sqrt{k+1}}{\sqrt{k+1}}$, yielding
+    \begin{align*}
+        \frac{2(k+1)\sqrt{k+1}}{(k+1)}-2+\frac{1}{\sqrt{k+1}} &> 2(\sqrt{k+2}-1)\\
+        2\sqrt{k+1}-2+\frac{1}{\sqrt{k+1}} &> 2(\sqrt{k+2}-1) &\text{\indent canceling $k+1$ in the first term on the left hand side}\\
+        2(\sqrt{k+1}-1)+\frac{1}{\sqrt{k+1}} &> 2(\sqrt{k+2}-1) &\text{\indent factoring a 2 from the first two terms on the left hand side}\\
+        \sum_{i=1}^{k}\frac{1}{\sqrt{i}}+\frac{1}{\sqrt{k+1}} &> 2(\sqrt{k+2}-1) &\text{\indent by the IH}\\
+        \sum_{i=1}^{k+1}\frac{1}{\sqrt{i}} &> 2(\sqrt{k+2}-1) &\text{\indent including the second term on the left hand side in the sum}\\
+    \end{align*}
+    Now, by the base case of $n=1$, the inductive step and the principle of mathematical induction, we have that $\sum_{i=1}^{n}\frac{1}{\sqrt{i}}>2(\sqrt{n+1}-1)$ for all integers $n\geq 1$.
+\end{prf}
+
+\section*{Problem 2}
+
+\subsection*{a) Let $b_n=\sum_{i=1}^n \frac{2i-1}{2^i}$. Compute $b_1, b_2, b_3$ and $b_4$. }
+\begin{align*}
+    b_1=\sum_{i=1}^1 \frac{2i-1}{2^i} &= \frac{2(1)-1}{2^1}=\frac{1}{2}\\
+    b_2=\sum_{i=1}^2 \frac{2i-1}{2^i} &= b_1 + \frac{2(2)-1}{2^2}=b_1+\frac{3}{4}=\frac{1}{2}+\frac{3}{4}=\frac{5}{4}\\
+    b_3=\sum_{i=1}^3 \frac{2i-1}{2^i} &= b_2 + \frac{2(3)-1}{2^3}=b_2+\frac{5}{8}=\frac{5}{4}+\frac{5}{8}=\frac{15}{8}\\
+    b_4=\sum_{i=1}^4 \frac{2i-1}{2^i} &= b_3 + \frac{2(4)-1}{2^4}=b_3+\frac{7}{16}=\frac{15}{8}+\frac{7}{16}=\frac{37}{16}\\
+\end{align*}
+\subsection*{b) Guess a simple formula for $b_n$.}
+\[b_n=3-\frac{2n+3}{2^n}\]
+\subsection*{c) Let $b_1, b_2, ..., b_n$ be the sequence with terms defined by $b_n=\sum_{i=1}^n \frac{2i-1}{2^i}$. Prove that $b_n=3-\frac{2n+3}{2^n}$ for all integers $n\geq 1$ by induction on $n$.}
+\begin{prf}[by induction]~\\
+    {\bf Basis} ($n=1$). Suppose that $n$ is an integer but specifically that $n=1$. Then we have that
+    \begin{align*}
+        b_n=\sum_{i=1}^n \frac{2i-1}{2^i}=\sum_{i=1}^1 \frac{2i-1}{2^i} &= \frac{2(1)-1}{2^1}\\
+        &= \frac{1}{2}\\
+        &= \frac{6}{2}-\frac{5}{2}\\
+        &= 3-\frac{2+3}{2}\\
+        &= 3-\frac{2(1)+3}{2^1}\\
+        &= 3-\frac{2n+3}{2^n} \text{\indent substituting $n=1$.}
+    \end{align*}
+    Hence we have the equality $b_n=\sum_{i=1}^n \frac{2i-1}{2^i}=3-\frac{2n+3}{2^n}$ in the base case of $n=1$.
+    
+    \noindent{\bf Inductive step.} Now suppose that $\forall_k \in \mathbb{Z}$ where $k\geq 1$ we have that
+    \[b_k=\sum_{i=1}^k \frac{2i-1}{2^i}=3-\frac{2k+3}{2^k} \text{\indent (Inductive hypothesis)}\]
+    We want to show that 
+    \[\sum_{i=1}^{k+1} \frac{2i-1}{2^i}=3-\frac{2(k+1)+3}{2^{k+1}}=3-\frac{2k+5}{2^{k+1}}\text{.}\]
+    Beginning with $\sum_{i=1}^{k+1} \frac{2i-1}{2^i}$ we can derive the desired equality as follows
+    \begin{align*}
+        \sum_{i=1}^{k+1} \frac{2i-1}{2^i}&=\sum_{i=1}^{k} \frac{2i-1}{2^i} + \frac{2(k+1)-1}{2^{k+1}} &\text{\indent removing the last term from the sum}\\
+        &= 3-\frac{2k+3}{2^k} + \frac{2(k+1)-1}{2^{k+1}} &\text{\indent by the IH}\\
+        &= 3-\frac{4k+6}{2^{k+1}} + \frac{2(k+1)-1}{2^{k+1}} &\text{\indent multiplying the second term by $\frac{2}{2}$}\\
+        &= 3+\frac{2k+1 - 4k-6}{2^{k+1}} &\text{\indent adding the two fractions}\\
+        &= 3-\frac{2k+5}{2^{k+1}}
+    \end{align*}
+    Now, by the base case of $n=1$, the inductive step and the principle of mathematical induction, we have the equality $b_n=\sum_{i=1}^n \frac{2i-1}{2^i}=3-\frac{2n+3}{2^n}$ for all integers $n\geq 1$.
+\end{prf}
+
+\section*{Problem 3}
+
+\subsection*{a) Prove or disprove. For all sets $A$, $B$ and $C$, if $A\cup B \subseteq A \cup C$ then $B \subseteq C.$}
+{\large\it Solution: the statement is false.}\\[0.25cm]
+{\bf Negation:} There exists sets $A, B$ and $C$ such that $A\cup B \subseteq A \cup C$ but $B \nsubseteq C.$
+\begin{prf}~\\
+    Suppose that $A, B$ and $C$ are sets with $A=\{1\}, B=\{1\}$ and $C=\varnothing$. From this, we see that
+    \begin{align*}
+        A\cup B &\subseteq A \cup C\\
+        \{1\}\cup \{1\} &\subseteq \{1\} \cup \varnothing &\text{\indent substituting the sets supposed for $A, B$ and $C$}\\
+        \{1\} &\subseteq \{1\} \cup \varnothing &\text{\indent since 1 is the only element which is in $\{1\}$ or $\{1\}$}\\
+        \{1\} &\subseteq \{1\} &\text{\indent since 1 is the only element which is in $\{1\}$ or $\varnothing$}
+    \end{align*}
+    Which is true since all elements contained in $\{1\}$ are also in $\{1\}$. In fact, these two sets are quite obviously equivalent, implying that each is a subset of the other. 
+    Hence, for $A=\{1\}, B=\{1\}$ and $C=\varnothing$ we have that $A\cup B \subseteq A \cup C$.
+    In addition, we have $B \nsubseteq C$ since
+    \begin{align*}
+        \{1\}&\nsubseteq \varnothing &\text{\indent since 1 is an element of the left hand side, but not the right}\\
+        B&\nsubseteq C &\text{\indent substituting $B=\{1\}$ and $C=\varnothing$.}
+    \end{align*}
+    Therefore, for the case of $A=\{1\}, B=\{1\}$ and $C=\varnothing$, we have that $A\cup B \subseteq A \cup C$ but $B\nsubseteq C$. Hence the negation of the original statement has been shown true.
+\end{prf}
+\subsection*{b) Prove or disprove. For all sets $A$, $B$ and $C$, if $A\cup B \subseteq A \cup C$ and $A\cap B \subseteq A \cap C$ then $B \subseteq C.$}
+{\large\it Solution: the statement is true.}
+\begin{prf}~\\
+    Suppose that $A,B$ and $C$ are sets. Now suppose that both $A\cup B \subseteq A\cup C$ and $A\cap B \subseteq A\cap C$. Finally, to show that $B \subseteq C$, suppose that $x$ is an element of $B$. We aim to show that $x\in C$.
+    Since we have $x\in B$, we have that $x\in A$ or $x\in B$. This means that $x\in A\cup B$. Now, since we supposed that  $A\cup B \subseteq A\cup C$, $x\in A\cup B$ implies that $x\in A\cup C$. Furthermore, we have two cases: either $x\in A$ or $x\in C$.
+    \begin{enumerate}[\bf\text{Case} 1:]
+        \item $x\in C$\\
+            Then, having started originally with $x\in B$, we've shown that $x\in C$.
+        \item $x\in A$\\
+            Then we have that $x\in A$ and $x\in B$, with the latter being one of the original suppositions. This means that $x\in A\cap B$. Since we also have supposed that $A\cap B \subseteq A\cap C$, we have that $x\in A\cap C$, which means that $x\in A$ and $x\in C$.
+            Therefore, in the case that $x\in A$, we necessarily have that $x\in C$ as well. 
+    \end{enumerate}
+    Therefore, for any three sets $A, B$ and $C$, if $A\cup B \subseteq A \cup C$ and $A\cap B \subseteq A \cap C$ then any $x\in B$ must also be an element of $C$ -- in other words, $B\subseteq C$. 
+\end{prf}
+\subsection*{c) Prove or disprove. For all sets $A$, $B$ and $C$, if $A \setminus B = A \setminus C$, then $(A\cap B) \setminus C =\varnothing$.}
+{\large\it Solution: the statement is true.}
+\begin{prf}~\\
+    Suppose that $A$, $B$ and $C$ are sets such that $A\setminus B = A\setminus C$. This means two things. First, if we have some $x\in A$ with the same $x\notin B$, then $x\in A$ and $x\notin C$. Second, if we have some $x\in A$ with the same $x\notin C$, then we have that $x\in A$ with the same $x\notin B$. 
+    We want to establish two things. First, that $\varnothing \subseteq (A\cap B)\setminus C$. This is vacuously true, since $\varnothing$ has no elements. Hence, any element of $\varnothing$ is an element of any set. This makes $\varnothing$ a subset of all sets, including $(A\cap B)\setminus C$. 
+    Second, we seek to establish is that $(A\cap B)\setminus C \subseteq \varnothing$. Importantly, the only subset of $\varnothing$ is $\varnothing$ itself, so we next try to show that $(A\cap B)\setminus C$ is the empty set. Assume for the purpose of deriving a contradiction that $(A\cap B)\setminus C$ is not empty, such that there is some $x\in (A\cap B)\setminus C$.
+    This means we have some $x\in A\cap B$ but $x\notin C$. Furthermore, we have both $x\in A$ and $x\in B$. Since we have both $x\in A$ and $x\notin C$, we have $x\in A$ and $x\notin B$. This gives rise to the contradiction $x\in B$, $x\notin B$. To resolve the contradiction, we conclude that $(A\cap B)\setminus C$ must be empty. This means we've shown $(A\cap B)\setminus C \subseteq \varnothing$, since $\varnothing \subseteq \varnothing$. 
+    Finally, we've shown that both $\varnothing \subseteq (A\cap B)\setminus C$ and $(A\cap B)\setminus C \subseteq \varnothing$. This means we have that $(A\cap B)\setminus C = \varnothing$. Therefore, for all sets $A$, $B$ and $C$, if $A \setminus B = A \setminus C$, then $(A\cap B) \setminus C =\varnothing$.
+\end{prf}
+\subsection*{d) Prove or disprove.  For all sets $A$, $B$ and $C$, if $(A\cap B)\setminus C=\varnothing$, then $A\setminus B=A\setminus C$. }
+{\large\it Solution: the statement is false.}\\[0.25cm]
+{\bf Negation:} There exists sets $A, B$ and $C$ such that $(A\cap B)\setminus C=\varnothing$ but $A\setminus B\neq A\setminus C$.
+\begin{prf}
+    Suppose $A, B$ and $C$ are sets with $A=\{1\}, B=\varnothing$ and $C=\{1\}$. Then we have that
+    \begin{align*}
+        (A\cap B)\setminus C &= (\{1\}\cap \varnothing)\setminus \{1\} \\
+        &= (\varnothing)\setminus \{1\} &\text{\indent since there are no elements which are in both $\{1\}$ and $\varnothing$}\\
+        &= \varnothing &\text{\indent since there are no elements which are both in $\varnothing$ and not in $\{1\}$}
+    \end{align*}
+    So we have that $(A\cap B)\setminus C=\varnothing$ in this case. Next we show that $A\setminus B\neq A\setminus C$.
+    \begin{align*}
+        A\setminus B &= \{1\}\setminus \varnothing\\
+        &= \{1\} &\text{\indent since only the element $1$ is in \{1\} while not being in $\varnothing$}\\
+        &\neq \varnothing\\
+        &= \{1\}\setminus \{1\} &\text{\indent since there are no elements in $\{1\}$ which aren't elements of $\{1\}$}\\
+        &= A\setminus C &\text{\indent substituting $A=\{1\}$ and $C=\{1\}$}
+    \end{align*}
+    So we also have that $A\setminus B\neq A\setminus C$ in this case. Therefore, since in the case of $A=\{1\}, B=\varnothing$ and $C=\{1\}$ we have both that $(A\cap B)\setminus C=\varnothing$ and $A\setminus B\neq A\setminus C$, the negation of the original statement has been shown true.
+\end{prf}
+\end{document}
+

@@ -1,0 +1,301 @@
+\documentclass[11pt, letterpaper]{article}
+\usepackage[margin=1.5cm]{geometry}
+\pagestyle{plain}
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage[shortlabels]{enumitem}
+\usepackage[makeroom]{cancel}
+
+\begin{document}
+\title{Assignment 1\\\normalsize STAT321}
+\author{Connor Braun}
+
+\allowdisplaybreaks
+
+\maketitle
+
+\section*{Problem 1}
+Let $P(A)=0.83$, $P(B|A)=0.22$ and $P(A^c\cap B^c)=0.05$.
+
+\subsection*{a) \normalfont Find $P(A\cap B)$.}
+\begin{align*}
+    P(B|A)=\frac{P(A\cap B)}{P(A)}\Rightarrow 0.22 = \frac{P(B\cap A)}{0.83} \Rightarrow P(B\cap A)=(0.22)(0.83)=0.1826
+\end{align*}
+Solution: $P(A\cap B)=0.1826$. 
+
+\subsection*{b) \normalfont Find $P(B)$.}
+\begin{align*}
+    P(A^c\cap B^c)=P(A\cup B)^c=0.05&=1-P(A\cup B)\\
+    &=1-(P(A)+P(B)-P(A\cup B))\\
+    &=1-0.83-P(B)+0.1826 \text{\indent ($P(A\cap B)=0.1826$ from 1.a.)}\\ 
+    0.05&=0.3526-P(B)\\
+    P(B)=0.3026
+\end{align*}
+Solution: $P(B)=0.3026$.
+
+\subsection*{c) \normalfont Find $P(B|A^c)$.}
+\begin{align*}
+    P(B|A^c)&=\frac{P(B\cap A^c)}{P(A^c)}\\
+    &=\frac{P(B)-P(A\cap B)}{1-P(A)}\\
+    &=\frac{0.3026-0.1826}{1-0.83} \text{\indent ($P(B)=0.3026$, $P(A\cap B)=0.1826$ from 1.a, 1.b respectively.)}\\
+    &=\frac{0.12}{0.17}\\
+    P(B|A^c)&=0.7059
+\end{align*}
+Solution: $P(B|A^c)=0.7059$.
+
+\section*{Problem 2}
+Let $H$ denote the outcome of the coin flip being heads, $T$ denoting tails. Let $1,2,3,4,5,6$ 
+indicate the outcome of the dice roll, so that $H3=3H$ indicates an outcome of 3 on the die roll
+with a simultaneous heads outcome on the coin flip. 
+
+\subsection*{a) \normalfont List the sample space $S$ for the experiment described.}
+Solution: $S=\{1H,1T,2H,2T,3H,3T,4H,4T,5H,5T,6H,6T\}$, $|S|=12$.
+
+\subsection*{b) \normalfont Let $E$ indicate that the number returned by the dice roll was even. Let $T\prime$
+be the event that the coin flip came up tails. Find $P(T\prime|E)$.}
+First, we have that
+\[E=\{2H, 2T, 4H,4T,6H,6T\}\]
+so $|E|=6$. Hence, we have
+\[P(E)=\frac{|E|}{|S|}=\frac{6}{12}=\frac{1}{2}.\]
+Next, we have that
+\[T\prime=\{1T,2T,3T,4T,5T,6T\}\]
+Taking the intersection of $T\prime$ and $E$
+\[T\prime\cap E=\{2T,4T,6T\}\]
+Since only $2T,4T,6T$ are in both $E$ and $T\prime$. The probability of the intersection is then
+\[P(E\cap T\prime)=\frac{|E\cap T\prime|}{|S|}=\frac{3}{12}=\frac{1}{4}=\frac{1}{2}\times\frac{1}{2}=P(E)\frac{6}{12}=P(E)\frac{|T\prime|}{|S|}=P(E)P(T\prime).\]
+Allowing us to conclude that $E$ and $T\prime$ are independent events. Finally, we have that
+\[P(T\prime|E)=\frac{P(T\prime\cap E)}{P(E)}=\frac{P(T\prime)P(E)}{P(E)}=P(T\prime)=\frac{1}{2}\]
+Solution: $P(T\prime|E)=\frac{1}{2}$.
+
+\subsection*{c) \normalfont Let $A=\{6H,6T\}$ be the event that the die roll yields a 6 and $B=T\prime$ 
+from 2.b. Show that $A$ and $B$ are independent.}
+First, we have that $A\cap B=\{6T\}$ since only $6T\in A$ and $6T\in B$. Then $|A\cap B|=1$ and it follows that
+\[P(A\cap B)=\frac{|A\cap B|}{|S|}=\frac{1}{12}=\frac{1}{2}\times \frac{1}{6}=\frac{|A|}{|S|}\frac{|B|}{|S|}=P(A)P(B)\]
+Solution: since $P(A\cap B)=P(A)P(B)$ we have that $A$ and $B$ are independent events.
+
+\section*{Problem 3}
+Let $M$ indicate the event that a randomly sampled person is male and $F$ the event that a randomly
+sampled person is female. Then $P(F)=0.53$, $P(M)=P(F^c)=1-P(F)=1-0.53=0.47$. Suppose $C$ is the event
+that a randomly sampled person is colourblind, and that we have $P(C|M)=0.08$ and $P(C|F)=0.01$.
+
+\subsection*{a) \normalfont Find $P(C)$.}
+First, we compute $P(C\cap M)=P(C\cap F^c)$.
+\begin{align*}
+    P(C|M)=\frac{P(C\cap M)}{P(M)}\Rightarrow 0.08=\frac{P(C\cap M)}{0.47}\Rightarrow P(C\cap M)=P(C\cap F^c)=(0.08)(0.47)=0.0376
+\end{align*}
+Next, we compute $P(C\cap F)$.
+\begin{align*}
+    P(C|F)=\frac{P(C\cap F)}{P(F)}\Rightarrow 0.01=\frac{P(C\cap F)}{0.53}\Rightarrow P(C\cap F)=(0.01)(0.53)=0.0053
+\end{align*}
+Finally, by the law of total probability we arrive at the solution.
+\[P(C)=P(C\cap F)+P(C\cap F^c)=0.0053+0.0376=0.0429\]
+Solution: $P(C)=0.0429$.
+
+\subsection*{b) \normalfont Find $P(M\cup C)$.}
+\begin{align*}
+    P(M\cup C)&=P(M)+P(C)-P(M\cap C)\\
+    &=0.47+0.0429-0.0376 \text{\indent (from 3.a.)}\\
+    P(M\cup C)&=0.4753
+\end{align*}
+Solution: $P(M\cup C)=0.4753$.
+
+\subsection*{c) \normalfont Find $P(F|C^c)$.}
+By the law of total probability, we have that $P(F)=P(F\cap C)+P(F\cap C^c)$ so $P(F\cap C^c)=P(F)-P(F\cap C)=0.53-0.0053=0.5247$.
+Then we have that
+\begin{align*}
+    P(F|C^c)&=\frac{P(F\cap C^c)}{P(C^c)}\\
+    &=\frac{0.5247}{1-0.0429}\\
+    &=\frac{0.5247}{0.9571}\\
+    P(F|C^c)&\approx 0.5482 \text{\indent (rounding to 4 decimal places.)}
+\end{align*}
+Solution: $P(F|C^c)\approx 0.5482$.
+
+\section*{Problem 4}
+Let $S$ be the sample space containing all possible outcomes when five balls are randomly drawn from the urn without replacement.
+
+\subsection*{a) \normalfont Let $B_5$ be the event that all five balls drawn are blue. Find $P(B_5)$.}
+\[P(B_5)=\frac{|B_5|}{|S|}=\frac{{8 \choose 5}}{{16 \choose 5}}=\frac{8!}{5!3!}\times\frac{5!11!}{16!}=\frac{1}{78}\approx 0.0128 \text{\indent (rounding to 4 decimal places.)}\]
+Solution: $P(B_5)\approx 0.0128$.
+
+\subsection*{b) \normalfont Let $R_5$ be the event that all five balls drawn are red. Find $P(R_5)$.}
+\[P(R_5)=\frac{|R_5|}{|S|}=\frac{{3 \choose 5}}{{16 \choose 5}}=\frac{0\times 5!11!}{16!}=0\]
+Solution: $P(R_5)=0$.
+
+\subsection*{c) \normalfont Let $R_1G_2B_2$ be a single event where one of the five balls drawn are red, two are green and two are blue. Find $P(R_1G_2B_2)$.}
+\begin{align*}
+    P(R_1G_2B_2)&=\frac{|R_1G_2B_2|}{|S|}\\
+    &=\frac{{3 \choose 1}{5 \choose 2}{8 \choose 2}}{{16 \choose 5}}\\
+    &=\frac{3!5!8!}{1!2!2!(3-1)!(5-2)!(8-2)!}\times\frac{5!11!}{16!}\\
+    &=\frac{5}{26}\\
+    P(R_1G_2B_2)&\approx 0.1923 \text{\indent (rounding to 4 decimal places.)}
+\end{align*}
+Solution: $P(R_1G_2B_2)\approx 0.1923$.
+
+\subsection*{d) \normalfont Let $R_2B_3$ be the event that two of five balls drawn are red and three are blue.
+Then let $R_3B_2$ be the event that three of five balls drawn are red and two are blue. Find $P(R_2B_3\cup R_3B_2)$.}
+Let $x\in R_2B_3$ be the outcome of an experiment. Then exactly two balls drawn were red, so it is not
+the case that exactly three balls drawn were red. Therefore, $x\notin R_3B_2$. Furthermore, there are no
+experimental outcomes which are in both event $R_2B_3$ and $R_3B_2$, so $R_2B_3\cap R_3B_2=\emptyset$.
+Then we compute $P(R_2B_3\cup R_3B_2)$ directly.
+\begin{align*}
+    P(R_2B_3\cup R_3B_2)&=P(R_2B_3)+P(R_3B_2)-P(R_2B_3\cap R_3B_2)\\
+    &=P(R_2B_3)+P(R_3B_2)-P(\emptyset)\\
+    &=\frac{|R_2B_3|}{|S|}+\frac{|R_3B_2|}{|S|}-0\\
+    &=\frac{{3 \choose 2}{8 \choose 3}}{{16 \choose 5}} + \frac{{3 \choose 3}{8 \choose 2}}{{16 \choose 5}}\\
+    &=\frac{3!8!}{2!3!5!}\times\frac{5!11!}{16!}+\frac{3!8!}{3!2!6!}\times\frac{5!11!}{16!}\\
+    &=\frac{1}{4368}(168+28)\\
+    P(R_2B_3\cup R_3B_2)&=\frac{7}{156}\approx 0.0449 \text{\indent (rounding to 4 decimal places.)}
+\end{align*}
+Solution: $P(R_2B_3\cup R_3B_2)=0.0449$. 
+
+\subsection*{e) \normalfont Let $\xi$ be the event that at most four of five balls drawn are blue. Find $P(\xi)$.}
+Noticing that $\xi^c$ is the event that all five of five balls drawn are blue, we have that $\xi^c=B_5$ (from 4.a).
+Then we compute $P(\xi)$ directly. 
+\[P(\xi)=1-P(\xi^c)=1-P(B_5)=1-0.0128=0.9872.\]
+Solution: $P(\xi)=0.9872$.
+
+\section*{Problem 5}
+
+\subsection*{a) \normalfont Let $S$ be the sample space containing all permutations of the letters in 
+'ALBERTA', treating the A's as distinct. Find $|S|$.}
+\[|S|=P^{7}_{7}=\frac{7!}{(7-7)!}=\frac{7!}{0!}=7!=5040.\]
+Solution: $|S|=5040$. 
+
+\subsection*{b) \normalfont Now let $S$ be the sample space containing all permutations of the letters in 
+'ALBERTA', treating the A's as indistinct. Find $|S|$.}
+By the multinomial theorem, we compute $|S|$ directly.
+\[|S|={7 \choose 2,1,1,1,1,1}=\frac{7!}{2!}=2520.\]
+Solution: $|S|=2520$.
+
+\section*{Problem 6}
+Although the four-sided die are rolled simultaneously, suppose we keep track of which is which, such
+that we are able to identify outcome of dice roll one by $x$ and dice roll two by $y$, where $x,y\in\mathbb{Z}$
+and $1\leq x\leq 4$, $1\leq y\leq 4$.
+
+\subsection*{a) \normalfont Let $z=xy$ be the product of the two dice rolls, and $z_E$ be the event that $z$ is even.
+Find $P(z_E)$.}
+If $z$ is even, then $z=2k$ for some $k\in\mathbb{Z}$, which further implies that $xy=2k$. Therefore, either $2|x$ or $2|y$,
+so both $x$ and $y$ are either $2$ or $4$. Let $x_E$ be the event that $x$ is even, and $y_E$ be the event that $y$ is even.
+We begin be computing $P(x_E\cap y_E)$.
+\[P(x_E\cap y_E)=\frac{{2 \choose 1}{2 \choose 1}}{{4 \choose 1}{4 \choose 1}}=\frac{2\times 2}{4\times 4}=\frac{4}{16}=\frac{1}{4}=\frac{1}{2}\times\frac{1}{2}=\frac{|\{2, 4\}|}{|\{1,2,3,4\}|}\times\frac{|\{2, 4\}|}{|\{1,2,3,4\}|}=P(x_E)P(y_E)\]
+Hence we have that $x_E$ and $y_E$ are independent events. As defined above, $z_E=(x_E\cup y_E)$, so 
+we now compute $P(z_E)$ directly.
+\[P(z_E)=P(x_E\cup y_E)=P(x_E)+P(y_E)-P(x_E\cap y_E)=\frac{1}{2}+\frac{1}{2}-\frac{1}{2}\times\frac{1}{2}=1-\frac{1}{4}=\frac{3}{4}\]
+Solution: $P(z_E)=0.75$.
+
+\subsection*{b) \normalfont Let $z_{<5}$ be the event that $z$ is less than 5 and $z_E^c=1-z_E=z_O$ 
+be the event that $z$ is odd. Find $P(z_O \cup z_{<5})$.}
+Let the ordered pair $(x,y)$ be one possible the outcome of an experiment and $S_z$ the sample space of $z$. 
+Then we can list $S_z$ as
+\[S_z=\{(1,1), (1,2), (1,3), (1,4), (2,1), (2,2), (2,3), (2,4), (3,1), (3,2), (3,3), (3,4), (4,1), (4,2), (4,3), (4,4)\}\]
+with $|S_z|=16$. For each element $a=(x,y)\in S_z$, we compute $z=xy$ as the product of the two members of the ordered pair. 
+$S_z$ can then be relisted as
+\[S_z=\{1, 2, 3, 4, 2, 4, 6, 8, 3, 6, 9, 12, 4, 8, 12, 16\}.\]
+Furthermore, we have
+\[z_O=\{1, 3, 3, 9\}\]
+with $|z_O|=4$ and 
+\[z_{<5}=\{1,2,3,4,2,4,3,4\}\]
+where $|z_{<5}|=8$. Then we find that
+\[z_{<5}\cap z_O=\{1,3,3\}\]
+since $z=1,3,3$ are the outcomes where $z$ is both less than 5 and odd, so $|z_O\cap z_{<5}|=3$. Then we compute $P(z_O\cup z_{<5})$ directly.
+\begin{align*}    
+    P(z_O\cup z_{<5})&=P(z_O)+P(z_{<5})-P(z_O\cap z_{<5})\\
+    &=\frac{|z_O|}{|S_z|}+\frac{|z_{<5}|}{|S_z|}-\frac{|z_O\cap z_{<5}|}{|S_z|}\\
+    &=\frac{4}{16}+\frac{8}{16}-\frac{3}{16}\\
+    &=\frac{9}{16}
+\end{align*}
+Solution: $P(z_O\cup z_{<5})=0.5625$.
+
+\subsection*{c) \normalfont Find $P(z_E\cap z_{<5})$.}
+\[z_E=\{2,4,2,4,6,8,6,12,4,8,12,16\}\]
+so we have that 
+\[z_E\cap z_{<5}=\{2,4,2,4,4\}\]
+since $2,4,2,4,4\in z_E$ and $2,4,2,4,4\in z_{<5}$. Then we compute $P(z_E\cap z_{<5})$ directly.
+\[P(z_E\cap z_{<5})=\frac{|z_E\cap z_{<5}|}{|S_z|}=\frac{5}{16}\]
+Solution: $P(z_E\cap z_{<5})=0.3125$.
+
+\section*{Problem 7}
+Let $A$ be the event that Alice hits the target, and $B$ be the event that Bonnie hits the target. 
+Then $P(A)=x$ and $P(B)=y$. Also suppose that $H$ is the event that the target is hit during an experiment.
+
+\subsection*{a) \normalfont Find $P(A\cap B|H)$.}
+First, by the law of total probability we find that
+\[P(A\cap B)=P(A\cap B\cap H)+P(A\cap B\cap H^c).\]
+However, $(A\cap B\cap H^c)=\emptyset$, since there is no experimental outcome where Alice and Bonnie
+both hit the target, but the target does not get hit. Hence,
+\begin{align*}    
+    P(A\cap B)&=P(A\cap B\cap H)+P(\emptyset)\\
+    P(A)P(B)&=P(A\cap B\cap H) \text{\indent (since $A$ and $B$ are independent.)}\\
+    xy&=P(A\cap B\cap H)   
+\end{align*}
+Next, we compute $P(H)$. Since $H$ is the event that the target gets hit, $H=A\cup B$ and $P(H)=P(A\cup B)$.
+\begin{align*}
+    P(H)=P(A\cup B)&=P(A)+P(B)-P(A\cap B)\\
+    &=x+y-P(A)P(B) \text{\indent (since A and B are independent.)}\\
+    P(H)&=x+y-xy
+\end{align*}
+Finally, we compute $P(A\cap B|H)$ directly.
+\[P(A\cap B|H)=\frac{P(A\cap B\cap H)}{P(H)}=\frac{xy}{x+y-xy}\]
+Solution: $P(A\cap B|H)=\frac{xy}{x+y-xy}$.
+
+\subsection*{b) \normalfont Find $P(B|H)$.}
+First, by the law of total probability we find that
+\[P(B)=P(B\cap H)+P(B\cap H^c).\]
+However, $(B\cap H^c)=\emptyset$, since there is no experimental outcome where Bonnie
+hits the target, but the target does not get hit. Hence,
+\begin{align*}    
+    P(B)&=P(B\cap H)+P(\emptyset)\\
+    P(B)&=P(B\cap H)\\
+    y&=P(B\cap H)   
+\end{align*}
+Since $P(H)=x+y-xy$ from 7.a, we can compute $P(B|H)$ directly.
+\[P(B|H)=\frac{P(B\cap H)}{P(H)}=\frac{y}{x+y-xy}\]
+Solution: $P(B|H)=\frac{y}{x+y-xy}$.
+
+\section*{Problem 8}
+Let $321_s$ be the event that a randomly sampled student from the STAT321 spring class was in the faculty
+of science. Let $321_s^c$ be the event that a randomly sampled student from the STAT321 spring class was not
+in the facult of science. Let $323$ be the event that a student who took STAT321 went on to take STAT323 that summer.
+We have that $P(323|321_s)=0.48$, $P(323|321_s^c)=0.22$, $P(321_s)=0.65$. 
+
+\subsection*{a) \normalfont Find $P(323 \cap 321_s)$.}
+We compute $P(323 \cap 321_s)$ directly.
+\[P(323|321_s)=\frac{P(323\cap 321_s)}{P(321_s)}\Rightarrow P(323 \cap 321_s)=P(323|321_s)P(321_s)=(0.48)(0.65)=0.312\]
+Solution: $P(323\cap 321_s)=0.312$ is the probability that a randomly sampled STAT323 student was
+in the faculty of science.
+
+\subsection*{b) \normalfont Find $P(323)$.}
+Starting from the law of total probability, we compute $P(323)$ directly.
+\begin{align*}
+    P(323)&=P(323\cap 321_s) + P(323\cap 321_s^c)\\
+    &=P(323|321_s)P(321_s) + P(323|321_s^c)P(321_s^c)\\
+    &=(0.48)(0.65)+(0.22)(1-0.65)\\
+    &=0.389
+\end{align*}
+Solution: $P(323)=0.389$.
+
+\section*{Problem 9}
+Let $S$ be the sample space containing all possible hands of 5 cards from a deck of 52, dealt randomly.
+
+\subsection*{a) \normalfont Let $F$ be the event that a poker hand is a flush. Find $P(F)$.}
+There are 4 suits in a deck. For each given suit, there are 13 cards of that suit in a deck of 52. Then,
+a flush is made by selecting one of the 4 suits, then drawing 5 cards of that suit from the 13 available in a deck. 
+We can compute $P(F)$ directly. 
+\[P(F)=\frac{|F|}{|S|}=\frac{{4\choose 1}{13\choose 5}}{{52\choose 5}}=\frac{5148}{2598960}\approx 0.001981 \text{\indent (rounding to 6 decimal places.)}\]
+Solution: $P(F)\approx 0.001981$.
+
+\subsection*{b) \normalfont Let $F_R$ be the event that a poker hand is a flush with a red suit. Find $P(F_R)$.}
+The reasoning is identical to that of 9.a, except now there are 2 suits to choose from instead of 4. 
+Then we can compute $P(F_R)$ directly. 
+\[P(F_R)=\frac{|F_R|}{|S|}=\frac{{2\choose 1}{13\choose 5}}{{52\choose 5}}=\frac{2574}{2598960}\approx 0.0009903 \text{\indent (rounding to 7 decimal places.)}\]
+Solution: $P(F_R)\approx 0.0009903$. 
+
+\subsection*{c) \normalfont Let $T$ be the event that a poker hand contains a three-of-a-kind. Find $P(T)$.}
+To construct all possible hands with three-of-a-kind, we first select 1 of 13 denominations. Then, of the 4 available
+cards for the selected denomination, we select 3 to make up the three-of-a-kind. There are 12 denominations remaining.
+We select a new denomination, then 1 of the 4 cards available of that denomination. Of the remaining 11 denominations, 
+we choose one, then choose one of the 4 available cards to be in the hand. By this reasoning, we compute
+$P(T)$ directly. 
+\[P(T)=\frac{|T|}{|S|}=\frac{{13\choose 1}{4\choose 3}{12\choose 1}{4\choose 1}{11\choose 1}{4\choose 1}}{{52\choose 5}}=\frac{109824}{2598960}\approx 0.04226 \text{\indent (rounding to 5 decimal places.)}\]
+Solution: $P(T)=0.04226$.
+\end{document}

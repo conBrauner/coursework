@@ -1,0 +1,312 @@
+\documentclass[11pt, letterpaper]{article}
+\usepackage[margin=1.5cm]{geometry}
+\pagestyle{plain}
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage[shortlabels]{enumitem}
+\usepackage[makeroom]{cancel}
+
+\begin{document}
+\title{Assignment 3\\\normalsize MATH271}
+\author{Connor Braun}
+
+\allowdisplaybreaks
+
+\theoremstyle{definition}
+\newtheorem*{prf}{Proof}
+\newtheorem{recipe}{Recipe}
+\newtheorem*{sol}{Solution}
+\newtheorem{case}{Case}
+\newtheoremstyle{mythrm}
+    {0pt}{0pt}
+    {\hangindent 2.5em}
+    {}
+    {\bfseries}
+    {.}
+    {0.5em}
+    {}
+\theoremstyle{mythrm}
+\newtheorem{lemma}{Lemma}
+
+\maketitle
+\section*{Problem 1}
+{\large Let $f: \mathbb{Z}\rightarrow\mathbb{Z}$ be the function defined by $f(x)=2x-3$ for all $x\in \mathbb{Z}$.}
+\subsection*{a) Prove or disprove the statement: $f$ is injective.}
+{\large\it Solution: the statement is true.}
+\begin{prf}
+    Let $a$ and $b$ be integers and suppose that $f(a)=f(b)$. Then we have that
+    \begin{align*}
+        a&=\frac{(2a-3)+3}{2}\\
+        &=\frac{f(a)+3}{2} &\text{\indent Since $2a-3=f(a)$}\\
+        &=\frac{f(b)+3}{2} &\text{\indent Since we've supposed that $f(a)=f(b)$}\\
+        &=\frac{(2b-3)+3}{2} &\text{\indent Since $f(b)=2b-3$}\\
+        &= b
+    \end{align*}
+    Therefore, for all integers $a$ and $b$ in the domain of $f$, whenever $f(a)=f(b)$ it is always the case that $a=b$. Furthermore, $f$ is injective. 
+\end{prf}
+\subsection*{b) Prove or disprove the statement: $f$ is surjective.}
+{\large\it Solution: The statement is false.}\\[0.25cm]
+{\bf Negation:} $f$ is not surjective $\iff \exists_{y}\in\mathbb{Z}$ such that $\forall_{x}\in\mathbb{Z}$, $y\neq f(x)$.
+\begin{prf}
+    Suppose that $y=2$ where $2\in\mathbb{Z}$ be an element of the codomain of $f$ and let $x\in\mathbb{Z}$ be some element of the domain of $f$.
+    Assume for the purpose of deriving a contradiction that we have $f(x)=y$. Then we see that
+    \begin{align*}
+        y&=f(x)\\
+        2&=2x-3 &\text{\indent Since we've chosen $y=2$ and by the definition of $f$}\\
+        5&=2x &\text{\indent Adding 3 to both sides}\\
+        \frac{5}{2}&=x&\text{\indent Dividing both sides by 2}
+    \end{align*}
+    However, since 5 and 2 are coprime, we have that $\frac{5}{2}\notin \mathbb{Z}$ and furthermore $x\notin\mathbb{Z}$. This violates our assumption that $x\in\mathbb{Z}$. 
+    To resolve the contradiction, it must be the case that $f(x)\neq y$. Therefore, there is no $x$ in the domain of $f$ which satisfies $f(x)=2$. However, since $2\in\mathbb{Z}$, 2 is in the codomain of $f$. Hence $f$ is not surjective.
+\end{prf}
+\subsection*{c) Prove or disprove the statement: for all functions $g$ and $h$ from $\mathbb{Z}\rightarrow\mathbb{Z}$, if $f\circ g=f\circ h$ then $g=h$.}
+{\large\it Solution: The statement is true.}
+\begin{prf}
+    Let $g:\mathbb{Z}\rightarrow\mathbb{Z}$ and $h:\mathbb{Z}\rightarrow\mathbb{Z}$ be functions and suppose that $f\circ g=f\circ h$. In order to show that $g=h$, we must have that $g$ and $h$ share the same domain and that for all elements $x$ of the domain, $g(x)=h(x)$.
+    We've already supposed $g$ and $h$ to have the same domain, so to show that $\forall_x\in\mathbb{Z}$, $g(x)=h(x)$, let $x\in\mathbb{Z}$. Now, for the purpose of deriving a contradiction, suppose that $g(x)\neq h(x)$. Then we have that
+    \begin{align*}
+        g(x)&\neq h(x)\\
+        f(g(x)) &\neq f(h(x)) &\text{\indent Since, as shown in 1.a, $f$ is injective.}\\
+        f\circ g(x)&\neq f\circ h(x) &\text{\indent By the definition of function composition.}
+    \end{align*}
+    However, this violates our assumption that $f\circ g=f\circ h$ since we have shown that there exists some $x$ in the domain of both $f\circ g$ and $f\circ h$ such that $f\circ g(x)\neq f\circ h(x)$. To resolve the contradiction, we must have that $g(x)=h(x)$. Therefore, we have that for any element $x$ of $\mathbb{Z}$, $g(x)=h(x)$. Therefore, we've shown that $g=h$. 
+\end{prf}
+\subsection*{d) Prove or disprove the statement: for all functions $g$ and $h$ from $\mathbb{Z}\rightarrow\mathbb{Z}$, if $g\circ f=h\circ f$ then $g=h$.}
+{\large\it Solution: The statement is false.}\\[0.25cm]
+{\bf Negation:} There exists functions $g$ and $h$ from $\mathbb{Z}\rightarrow\mathbb{Z}$ such that $g\circ f=h\circ f$ but $g\neq h$.
+\begin{prf}
+    Let $g:\mathbb{Z}\rightarrow\mathbb{Z}$ and $h:\mathbb{Z}\rightarrow\mathbb{Z}$ be the functions defined by:
+    \begin{align*}
+        g(a)=2a \indent &h(b)=\begin{cases}
+            2b &\text{if b is odd}\\
+            b &\text{if b is even}
+        \end{cases}
+    \end{align*}
+    for any integers $a$ and $b$ in the domain of $g$ and $h$ respectively. We clearly have that $g\neq h$ since 2 is an element of both of their domains, but $g(2)=2(2)=4$ while $h(2)=2$ since 2 is even. Furthermore, $4\neq 2$ implies that $g(2)\neq h(2)$ and hence $g\neq h$.
+    Now, by composing $f$ with each of these, we see that
+    \begin{align*}
+        g\circ f(c)=2(2c-3) \indent &h\circ f(d)=\begin{cases}
+            2(2d-3) &\text{if d is odd}\\
+            2d-3 &\text{if d is even}
+        \end{cases}
+    \end{align*}
+    for any two integers $c$ and $d$ by the definitions of $f$, $g$, $h$ and the composition of functions. Furthermore, we have that for any odd integer $x$
+    \begin{align*}
+        g(x)&=2x=h(x)
+    \end{align*}
+    Therefore, if we can show that $\forall_z\in\mathbb{Z}$, $f(z)$ is an odd integer, then we'll have that
+    \begin{align*}
+        g\circ f(z)=g(f(z))=2f(z)=h(f(z))=h\circ f(z)
+    \end{align*}
+    as required. Consider the following lemma.\\
+    \begin{lemma}
+        Let $z$ be an integer in the domain of $f$. Then we have that
+        \begin{align*}
+            f(z)&=2z-3\\
+            &=2z-4+1\\
+            &=2(z-2)+1
+        \end{align*}
+        Where since $z-2$ is an integer, we have that for any integer $z$ in the domain of $f$, $f(z)$ is odd.\\
+    \end{lemma}
+    \noindent By lemma 1, we now have that for any integer $z$ in the domain of $g\circ f$ and $h\circ f$
+    \begin{align*}
+        g\circ f(z)=g(f(z))=2(2z-3)=h(f(z))=h\circ f(z)
+    \end{align*}
+    since $f(z)$ is an odd integer. This in conjunction with the fact that $g\circ f$ and $h\circ f$ share the same domain ($\mathbb{Z}$) means we have that $g\circ f= g\circ h$. Therefore, we've shown the existence of functions $g:\mathbb{Z}\rightarrow\mathbb{Z}$ and $h:\mathbb{Z}\rightarrow\mathbb{Z}$ such that $g\circ f=h\circ f$ but $g\neq h$.
+\end{prf}
+\section*{Problem 2}
+{\large Let A=\{1,2,3,4\}. Let $f:A\rightarrow A$ be the function defined by $f=\{(1,2),(2,3),(3,2),(4,4)\}$.}
+\subsection*{a) How many functions $g:A\rightarrow A$ so that $f\circ g(1)=2$?}
+{\large\it Solution: there are $1\times 4^3+1\times 4^3=2(4^3)=128$ such functions $g$.}\\[0.25cm]
+We define 2 different recipes, where using either will construct a unique definition of a function $g:A\rightarrow A$ guaranteeing that $f\circ g(1)=2$.
+Furthermore, using either of the two recipes allow one to define every function $g:A\rightarrow A$ guaranteeing that $f\circ g(1)=2$ in exactly one way. 
+\begin{recipe}~\\
+        Setting $g(1)=1$, where $1\in A$, we have that $f\circ g(1)=f(g(1))=f(1)=2$ as required. One can construct all possible functions $g$ where $(1,1)\in g$ by the recipe:
+    \begin{align*}
+        &(\text{I}) \text{ Let the image of $1\in A$ under $g$ be 1.}\\
+        &(\text{II}) \text{ Choose an element of $A$ to be the image of $2\in A$ under $g$.}\\
+        &(\text{III}) \text{ Choose an element of $A$ to be the image of $3\in A$ under $g$.}\\
+        &(\text{IV}) \text{ Choose an element of $A$ to be the image of $4\in A$ under $g$.}
+    \end{align*}
+    Hence we have that in the case where we require $(1,1)\in g$, there are $1\times 4\times 4\times 4=1\times 4^3$ possible ways to define $g:A\rightarrow A$.
+\end{recipe}
+\begin{recipe}~\\
+    Setting $g(1)=3$, where $1,3\in A$, we have that $f\circ g(1)=f(g(1))=f(3)=2$ as required. One can construct all possible functions $g$ where $(1,3)\in g$ by the recipe:
+    \begin{align*}
+        &(\text{I}) \text{ Let the image of $1\in A$ under $g$ be 3.}\\
+        &(\text{II}) \text{ Choose an element of $A$ to be the image of $2\in A$ under $g$.}\\
+        &(\text{III}) \text{ Choose an element of $A$ to be the image of $3\in A$ under $g$.}\\
+        &(\text{IV}) \text{ Choose an element of $A$ to be the image of $4\in A$ under $g$.}
+    \end{align*}
+    Hence we have that in the case where we require $(1,3)\in g$, there are $1\times 4\times 4\times 4=1\times 4^3$ possible ways to define $g:A\rightarrow A$.
+\end{recipe}
+\subsection*{b) How many injective functions $g:A\rightarrow A$ so that $f\circ g(1)=2$?}
+{\large\it Solution: there are $1\times 3\times 2\times 1 + 1\times 3\times 2\times 1=6+6=12$ such functions $g$.}\\[0.25cm]
+We define 2 different recipes, where using either will construct a unique definition of a function $g:A\rightarrow A$ guaranteeing that $f\circ g(1)=2$.
+Furthermore, using either of the two recipes allow one to define every function $g:A\rightarrow A$ guaranteeing that $f\circ g(1)=2$ in exactly one way. 
+\begin{recipe}~\\
+    Setting $g(1)=1$, where $1\in A$, we have that $f\circ g(1)=f(g(1))=f(1)=2$ as required. One can construct all possible injective functions $g$ where $(1,1)\in g$ by the recipe:
+    \begin{align*}
+       &(\text{I}) \text{ Let the image of $1\in A$ under $g$ be 1.}\\ 
+       &(\text{II}) \text{ Choose an element $a$ of $A$ to be the image of $2\in A$ under $g$ such that for all $2\neq x\in A$, $(x,a)\notin g$ yet.}\\ 
+       &(\text{II}) \text{ Choose an element $b$ of $A$ to be the image of $3\in A$ under $g$ such that for all $3\neq y\in A$, $(y,b)\notin g$ yet.}\\ 
+       &(\text{II}) \text{ Choose an element $c$ of $A$ to be the image of $4\in A$ under $g$ such that for all $4\neq z\in A$, $(z,c)\notin g$ yet.} 
+    \end{align*}
+    Hence we have that in the case where we require $(1,1)\in g$, there are $1\times 3\times 2\times 1=6$ possible ways to define $g:A\rightarrow A$.
+\end{recipe}
+\begin{recipe}~\\
+    Setting $g(1)=3$, where $1,3\in A$, we have that $f\circ g(1)=f(g(1))=f(3)=2$ as required. One can construct all possible injective functions $g$ where $(1,3)\in g$ by the recipe:
+    \begin{align*}
+       &(\text{I}) \text{ Let the image of $1\in A$ under $g$ be 3.}\\ 
+       &(\text{II}) \text{ Choose an element $a$ of $A$ to be the image of $2\in A$ under $g$ such that for all $2\neq x\in A$, $(x,a)\notin g$ yet.}\\ 
+       &(\text{II}) \text{ Choose an element $b$ of $A$ to be the image of $3\in A$ under $g$ such that for all $3\neq y\in A$, $(y,b)\notin g$ yet.}\\ 
+       &(\text{II}) \text{ Choose an element $c$ of $A$ to be the image of $4\in A$ under $g$ such that for all $4\neq z\in A$, $(z,c)\notin g$ yet.} 
+    \end{align*}
+    Hence we have that in the case where we require $(1,3)\in g$, there are $1\times 3\times 2\times 1=6$ possible ways to define $g:A\rightarrow A$.
+\end{recipe}
+\subsection*{c) How many functions $h:A\rightarrow A$ so that $f\circ h \circ f(2)=3$?}
+{\large\it Solution: there are $1\times 4^3=4^3=64$ such functions $h$.}\\[0.25cm]
+We define one recipe, which when followed will construct a unique definition of a function $h:A\rightarrow A$ guaranteeing that $f\circ h\circ f(2)=3$.
+This recipe will be capable of defining all possible functions $h$ that have this property in exactly one way. 
+\begin{recipe}~\\
+    First, we notice that $f\circ h\circ f(2)=f(h\circ f(2))$. Now, in order for $h:A\rightarrow A$ to have the property that $f\circ h\circ f(2)=3$ we require that $h\circ f(2)=2$ since by the definition of $f$, $\forall_x\in A$, $f(x)=3$ only when $x=2$. Furthermore, we have that
+    \begin{align*}
+        2&=h\circ f(2) &\text{\indent As required for the desired property that $f\circ h\circ f(2)=3$.}\\
+        &=h(f(2)) &\text{\indent By the definition of function composition}\\
+        &=h(3) &\text{\indent By the definition of $f$.}
+    \end{align*}
+    Therefore, so long as $(3,2)\in h$, we will have that $f\circ h\circ f(2)=3$ as required. Now, one can construct any function $h:A\rightarrow A$ such that $(3,2)\in h$ by the steps:
+    \begin{align*}
+        &(\text{I}) \text{ Let the image of $3\in A$ under $h$ be 2.}\\
+        &(\text{II}) \text{ Choose an element of $A$ to be the image of $1\in A$ under $h$.}\\
+        &(\text{III}) \text{ Choose an element of $A$ to be the image of $2\in A$ under $h$.}\\
+        &(\text{IV}) \text{ Choose an element of $A$ to be the image of $4\in A$ under $h$.}\\
+    \end{align*}
+    Hence we have that in the case where we require $(3,2)\in h$, there are $1\times 4\times 4\times 4 = 1\times 4^3=64$ possible ways to define $h:A\rightarrow A$. 
+\end{recipe}
+\subsection*{d) How many injective functions $h:A\rightarrow A$ so that $f\circ h\circ f(2)=3$?}
+{\large\it Solution: there are $1\times 3\times 2\times 1=6$ such functions $h$.}\\[0.25cm]
+We define one recipe, which when followed will construct a unique definition of a function $h:A\rightarrow A$ guaranteeing that $f\circ h\circ f(2)=3$.
+This recipe will be capable of defining all possible functions $h$ that have this property in exactly one way.
+\begin{recipe}~\\
+    First, we notice that $f\circ h\circ f(2)=f(h\circ f(2))$. Now, in order for $h:A\rightarrow A$ to have the property that $f\circ h\circ f(2)=3$ we require that $h\circ f(2)=2$ since by the definition of $f$, $\forall_x\in A$, $f(x)=3$ only when $x=2$. Furthermore, we have that
+    \begin{align*}
+        2&=h\circ f(2) &\text{\indent As required for the desired property that $f\circ h \circ f(2)=3$.}\\
+        &= h(f(2)) &\text{\indent By the definition of function composition}\\
+        &=h(3) &\text{\indent By the definition of $f$.}
+    \end{align*}
+    Therefore, so long as $(3,2)\in h$. we will have that $f\circ h\circ f(2)=3$ as required. In order to ensure injectivity, we further require that no two distinct elements of the domain $A$ of $h$ can have the same image in the codomain $A$ of $h$. 
+    Now, one can construct any injective function $h:A\rightarrow A$ with $(3,2)\in h$ by the steps:
+    \begin{align*}
+       &(\text{I}) \text{ Let the image of $3\in A$ under $h$ be 2.}\\ 
+       &(\text{II}) \text{ Choose an element $a$ of $A$ to be the image of $1\in A$ under $h$ such that for all $1\neq x\in A$, $(x,a)\notin h$ yet.}\\ 
+       &(\text{II}) \text{ Choose an element $b$ of $A$ to be the image of $2\in A$ under $h$ such that for all $2\neq y\in A$, $(y,b)\notin h$ yet.}\\ 
+       &(\text{II}) \text{ Choose an element $c$ of $A$ to be the image of $4\in A$ under $h$ such that for all $4\neq z\in A$, $(z,c)\notin h$ yet.} 
+    \end{align*}
+    Hence we have that in the case where we require $(3,2)\in h$, there are $1\times 3\times 2\times 1=6$ possible ways to define $h:A\rightarrow A$ where $h$ is injective.
+\end{recipe}
+
+\section*{Problem 3}
+{\large Let $\mathbb{Z^+}$ be the set of all positive integers. Let $R$ be the relation on $\mathbb{Z^+}\times \mathbb{Z^+}$ defined by: For all $(a,b)$, $(c,d)\in\mathbb{Z^+}\times\mathbb{Z^+}$, $(a.b)R(c,d)$ if and only if $a+b\leq c+d$.}
+\subsection*{a) Prove whether or not $R$ is reflexive, symmetric, antisymmetric, transitive.}
+{\large\it Solution I: The relation $R$ is reflexive.}
+\begin{prf}
+    Let $(x,y)\in\mathbb{Z^+}\times\mathbb{Z^+}$ be an ordered pair of positive integers. Then we have that
+    \begin{align*}
+        x+y=x+y\\
+        x+y\leq x+y
+    \end{align*}
+    Which, by the defintion of $R$, means that we have $(x,y)R(x,y)$. Therefore, for any ordered pair of positive integers $(x,y)\in\mathbb{Z^+}\times\mathbb{Z^+}$, $(x,y)R(x,y)$ and $R$ is reflexive.
+\end{prf}
+{\noindent\large\it Solution II: The relation $R$ is not symmetric.}\\[0.25cm]
+{\bf Negation:} There exists some $(x,y)\in\mathbb{Z^+}\times\mathbb{Z^+}$ and $(u,v)\in\mathbb{Z^+}\times\mathbb{Z^+}$ such that $(x,y)R(u,v)$ but $(u,v)\cancel{R}(x,y)$.
+\begin{prf}
+    Let $x=1$, $y=2$, $u=3$, $v=4$ such that we have $(x,y)=(1,2)\in\mathbb{Z^+}\times\mathbb{Z^+}$ and $(u,v)=(3,4)\in\mathbb{Z^+}\times\mathbb{Z^+}$. Then we can see that
+    \begin{align*}
+        3&\leq 7\\
+        1+2&\leq 3+4\\
+        x+y&\leq u+v
+    \end{align*}
+    Which implies that $(x,y)R(u,v)$ by the definition of the relation $R$. However, we also have that
+    \begin{align*}
+        7&\nleq 3\\
+        3+4&\nleq 1+2\\
+        u+v&\nleq x+y
+    \end{align*}
+    Which implies that $(u,v)\cancel{R}(x,y)$ by the definition of the relation $R$. Therefore, the relation $R$ is not symmetric. 
+\end{prf}
+{\noindent\large\it Solution III: The relation $R$ is not antisymmetric.}\\[0.25cm]
+{\bf Negation:} There exists some $(x,y)\in\mathbb{Z^+}\times\mathbb{Z^+}$ and $(u,v)\in\mathbb{Z^+}\times\mathbb{Z^+}$ such that $(x,y)R(u,v)$ and $(u,v)R(x,y)$ but $(x,y)\neq (u,v)$.
+\begin{prf}
+    Let $x=1$, $y=2$, $u=2$, $v=1$ such that we have $(x,y)=(1,2)\in\mathbb{Z^+}\times\mathbb{Z^+}$ and $(u,v)=(2,1)\in\mathbb{Z^+}\times\mathbb{Z^+}$. Then we have that
+    \begin{align*}
+        (1,2)&\neq (2,1)\\
+        (x,y)&\neq (u,v).
+    \end{align*}
+    Furthermore, we can see that
+    \begin{align*}
+        3&\leq 3\\
+        1+2&\leq 2+1\\
+        x+y&\leq u+v
+    \end{align*}
+    Which means we have that $(x,y)R(u,v)$ by the definition of the relation $R$. Similarly, we have that
+    \begin{align*}
+        3&\leq 3\\
+        2+1&\leq 1+2\\
+        u+v&\leq x+y
+    \end{align*}
+    Which means we also have that $(u,v)R(x,y)$ by the definition of the relation $R$. Hence we've shown the existence of two ordered pairs $(x,y)\in\mathbb{Z^+}\times\mathbb{Z^+}$ and $(u,v)\in\mathbb{Z^+}\times\mathbb{Z^+}$ such that $(x,y)R(u,v)$ and $(u,v)R(x,y)$ but $(x,y)\neq (u,v)$.
+    Therefore, the relation $R$ is not antisymmetric. 
+\end{prf}
+{\noindent\large\it Solution IV: The relation $R$ is transitive.}
+\begin{prf}
+    Let $(a,b)\in\mathbb{Z^+}\times\mathbb{Z^+}$, $(c,d)\in\mathbb{Z^+}\times\mathbb{Z^+}$ and $(e,f)\in\mathbb{Z^+}\times\mathbb{Z^+}$. Next, suppose that both $(a,b)R(c,d)$ and $(c,d)R(e,f)$. Then we have that both
+    \begin{align*}
+        a+b\leq c+d \indent&\text{and}\indent c+d\leq e+f
+    \end{align*}
+    However, these two facts together imply that
+    \begin{align*}
+        a+b\leq e+f
+    \end{align*}
+    Which means that we have that $(a,b)R(e,f)$ by the definition of the relation $R$. Therefore, $R$ is transitive.
+\end{prf}
+\subsection*{b) List all pairs $(x,y)\in\mathbb{Z^+}\times\mathbb{Z^+}$ so that $(x,y)R(2,2)$.}
+\begin{align*}
+    \text{I: } &(1,1)\\
+    \text{II: } &(1,2)\\
+    \text{III: } &(2,1)\\
+    \text{IV: } &(2,2)\\
+    \text{V: } &(3,1)\\
+    \text{VI: } &(1,3)
+\end{align*}
+\subsection*{c) Let $n\in\mathbb{Z^+}$. How many $(x,y)\in\mathbb{Z^+}\times\mathbb{Z^+}$ so that $(x,y)R(n,n)$?}
+{\large\it Solution: there are $\sum_{i=0}^{2n-1}i$ ordered pairs $(x,y)\in\mathbb{Z^+}\times\mathbb{Z^+}$ so that $(x,y)R(n,n)$ for some $n\in\mathbb{Z^+}$.}\\[0.25cm]
+Let $n\in\mathbb{Z^+}$ be some positive integer and let $(x,y)\in\mathbb{Z^+}\times\mathbb{Z^+}$ be an ordered pair such that $(x,y)R(n,n)$. The number of such ordered pairs depends on the selected value of $n$. In fact, by the definition of relation $R$ we can see that
+\begin{align*}
+    (x,y)R(n,n)\iff x+y&\leq n+n\\
+    (x,y)R(n,n)\iff x+y&\leq 2n
+\end{align*}
+Now, since $\forall_z\in\mathbb{Z^+}$, $1\leq z$, and both $x\in\mathbb{Z^+}$ and $y\in\mathbb{Z^+}$, we have that
+\begin{align*}
+    2&= 1+1\\
+    &\leq x+y
+\end{align*} 
+Taking together the upper and lower bound of $x+y$, we see that
+\begin{align*}
+    2\leq x+y\leq 2n
+\end{align*}
+Which means that for a chosen value of $n\in\mathbb{Z^+}$, there are $2n-1$ possible values of $x+y$ such that $(x,y)R(n,n)$ by relation $R$.
+Now, let $s=x+y$ be one of the sums on interval $2\leq s\leq 2n$. For each $s$, we define a recipe that, when followed, will generate any ordered pair $(a,b)\in\mathbb{Z^+}\times\mathbb{Z^+}$ such that $a+b=s$ (guaranteeing that $(a,b)R(n,n)$ under relation $R$) in exactly one way. 
+The number of such ordered pairs that can be generated by each recipe is dependent on the corresponding value of $s$ only. Finally, by adding together the number of possible ordered pairs generated by each recipe, we arrive at the total number of ordered pairs $(a,b)\in\mathbb{Z^+}\times\mathbb{Z^+}$ such that $(a,b)R(n,n)$ under relation $R$.
+\begin{recipe}
+    Let $n\in\mathbb{Z^+}$ and $2\leq s\leq 2n$. Then we can generate any ordered pair $(a,b)\in\mathbb{Z^+}\times\mathbb{Z^+}$ such that $(a,b)R(n,n)$ under relation $R$ in exactly one way by the steps:
+    \begin{align*}
+        &(\text{I})\text{ Choose $p\in\mathbb{Z}$ with $1\leq p\leq s-1$.}\\
+        &(\text{II})\text{ Set $a=p$.}\\
+        &(\text{III})\text{ Set $b=s-p$.}
+    \end{align*} 
+    Then we have that $a+b=p+s-p=s$. Furthermore, since $s\leq 2n$, we have that $a+b\leq n+n$ implying that $(a,b)R(n,n)$ by the definition of relation $R$ as required.
+    Importantly, the number of ordered pairs $(a,b)$ that can be generated by this recipe is $s-1$ since that is how many choices of $p$ there are. 
+    Since a recipe can be defined for every $s$ where $2\leq s\leq 2n$, and since each recipe generates $s-1$ unique ordered pairs $(a,b)$ with $(a,b)R(n,n)$, the total number of ordered pairs $(a,b)$ where $(a,b)R(n,n)$ is $1+2+...+2n-1=\sum_{i=1}^{2n-1}i$.
+\end{recipe}
+\end{document}
