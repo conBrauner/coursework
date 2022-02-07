@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.9)  15 JAN 2022 17:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.9)  26 JAN 2022 23:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/conbraun/aEbE/coursework_Latex/NEUR500/thesis_progress_report/thesis_progress_report.tex
-(/home/conbraun/aEbE/coursework_Latex/NEUR500/thesis_progress_report/thesis_progress_report.tex
+**/home/conbraun/aEbE/coursework_Latex/POLI345/easter_egg/easter_egg.tex
+(/home/conbraun/aEbE/coursework_Latex/POLI345/easter_egg/easter_egg.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2021-11-22> (/usr/share/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
@@ -163,48 +163,31 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 LaTeX Info: Redefining \hbar on input line 50.
 ) (/usr/share/texmf-dist/tex/latex/cancel/cancel.sty
 Package: cancel 2013/04/12 v2.2 Cancel math terms
-) (/usr/share/texmf-dist/tex/latex/tools/indentfirst.sty
-Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
-) (/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
- (/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
- (/usr/share/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
-) (/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 107.
- (/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
-))
-\Gin@req@height=\dimen157
-\Gin@req@width=\dimen158
-)
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 20.
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 13.
  (/usr/share/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 ) (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2021-12-14 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count274
 \l__pdf_internal_box=\box53
-) (./thesis_progress_report.aux)
-\openout1 = `thesis_progress_report.aux'.
+) (./easter_egg.aux)
+\openout1 = `easter_egg.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -240,112 +223,54 @@ LaTeX Font Info:    ... okay on input line 20.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count275
-\scratchdimen=\dimen159
-\scratchbox=\box54
-\nofMPsegments=\count276
-\nofMParguments=\count277
-\everyMPshowfont=\toks30
-\MPscratchCnt=\count278
-\MPscratchDim=\dimen160
-\MPnumerator=\count279
-\makeMPintoPDFobject=\count280
-\everyMPtoPDFconversion=\toks31
-) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
-Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
- (/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-))
-LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line 24.
- (/usr/share/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--25
+
+ []
+
+LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line 27.
+(/usr/share/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line 24.
+LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line 27.
  (/usr/share/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line 24.
+LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line 27.
  (/usr/share/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line 24.
+LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line 27.
  (/usr/share/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 24.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 24.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 24.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 27.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 27.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 27.
 
+Underfull \hbox (badness 10000) in paragraph at lines 26--31
 
-LaTeX Warning: No \author given.
+ []
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 182.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 182.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 182.
- [4] [5] [6] [7] [8] [9]
-Overfull \hbox (33.47417pt too wide) in paragraph at lines 585--588
-\OT1/ptm/m/n/12 Levy WB, Stew-ard O (1983) Tem-po-ral con-ti-gu-ity re-quire-ments for long-term as-so-cia-tive po-ten-ti-a-tion/depression
- []
-
-[10] [11]
-<~./figures//confirm_fig.png, id=47, 4430.30156pt x 1367.1075pt>
-File: ~./figures//confirm_fig.png Graphic file (type png)
-<use ~./figures//confirm_fig.png>
-Package pdftex.def Info: ~./figures//confirm_fig.png  used on input line 680.
-(pdftex.def)             Requested size: 569.05511pt x 175.58159pt.
-<~./figures//base_model_RMQ.png, id=49, 3488.53313pt x 1192.455pt>
-File: ~./figures//base_model_RMQ.png Graphic file (type png)
-<use ~./figures//base_model_RMQ.png>
-Package pdftex.def Info: ~./figures//base_model_RMQ.png  used on input line 694.
-(pdftex.def)             Requested size: 512.1496pt x 175.0577pt.
- [12 <./figures//confirm_fig.png>]
-<~./figures//base_model_RMQ_zoom.png, id=54, 2603.97844pt x 873.2625pt>
-File: ~./figures//base_model_RMQ_zoom.png Graphic file (type png)
-<use ~./figures//base_model_RMQ_zoom.png>
-Package pdftex.def Info: ~./figures//base_model_RMQ_zoom.png  used on input line 707.
-(pdftex.def)             Requested size: 569.05511pt x 190.83914pt.
-<~./figures//neurodyn_var_rec_RMQ.png, id=55, 2209.50468pt x 1641.13126pt>
-File: ~./figures//neurodyn_var_rec_RMQ.png Graphic file (type png)
-<use ~./figures//neurodyn_var_rec_RMQ.png>
-Package pdftex.def Info: ~./figures//neurodyn_var_rec_RMQ.png  used on input line 718.
-(pdftex.def)             Requested size: 312.9803pt x 232.4613pt.
- [13 <./figures//base_model_RMQ.png> <./figures//base_model_RMQ_zoom.png>]
-<~./figures//neurodyn_var_lock_RMQ.png, id=62, 2123.68407pt x 1577.895pt>
-File: ~./figures//neurodyn_var_lock_RMQ.png Graphic file (type png)
-<use ~./figures//neurodyn_var_lock_RMQ.png>
-Package pdftex.def Info: ~./figures//neurodyn_var_lock_RMQ.png  used on input line 729.
-(pdftex.def)             Requested size: 312.9803pt x 232.53284pt.
-<~./figures//neurodyn_var_prec_RMQ.png, id=63, 2123.68407pt x 1577.895pt>
-File: ~./figures//neurodyn_var_prec_RMQ.png Graphic file (type png)
-<use ~./figures//neurodyn_var_prec_RMQ.png>
-Package pdftex.def Info: ~./figures//neurodyn_var_prec_RMQ.png  used on input line 740.
-(pdftex.def)             Requested size: 312.9803pt x 232.53284pt.
- [14 <./figures//neurodyn_var_rec_RMQ.png> <./figures//neurodyn_var_lock_RMQ.png>] [15 <./figures//neurodyn_var_prec_RMQ.png>] (./thesis_progress_report.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./easter_egg.aux) ) 
 Here is how much of TeX's memory you used:
- 3775 strings out of 478353
- 58060 string characters out of 5854636
- 366347 words of memory out of 5000000
- 21834 multiletter control sequences out of 15000+600000
- 445852 words of font info for 120 fonts, out of 8000000 for 9000
+ 2831 strings out of 478353
+ 42688 string characters out of 5854636
+ 344121 words of memory out of 5000000
+ 20958 multiletter control sequences out of 15000+600000
+ 416800 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,13n,62p,320b,273s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on thesis_progress_report.pdf (15 pages, 4009408 bytes).
+ 55i,5n,62p,296b,241s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
+Output written on easter_egg.pdf (1 page, 29039 bytes).
 PDF statistics:
- 117 PDF objects out of 1000 (max. 8388607)
- 67 compressed objects within 1 object stream
+ 19 PDF objects out of 1000 (max. 8388607)
+ 11 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
